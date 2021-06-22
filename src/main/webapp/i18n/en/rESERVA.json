@@ -1,0 +1,34 @@
+{
+  "reservaApp": {
+    "rESERVA": {
+      "home": {
+        "title": "RESERVAS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new RESERVA",
+        "createOrEditLabel": "Create or edit a RESERVA",
+        "notFound": "No RESERVAS found"
+      },
+      "created": "A new RESERVA is created with identifier {{ param }}",
+      "updated": "A RESERVA is updated with identifier {{ param }}",
+      "deleted": "A RESERVA is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete RESERVA {{ id }}?"
+      },
+      "detail": {
+        "title": "RESERVA"
+      },
+      "id": "ID",
+      "codReserva": "Cod Reserva",
+      "dataReserva": "Data Reserva",
+      "horarioInicio": "Horario Inicio",
+      "horarioFinal": "Horario Final",
+      "dataSolicitacao": "Data Solicitacao",
+      "horarioDaSolicitacao": "Horario Da Solicitacao",
+      "statusReservaSala": "Status Reserva Sala",
+      "sALA": "S ALA",
+      "cONSULTA": "C ONSULTA",
+      "pROFESSOR": "P ROFESSOR",
+      "pROFESSOR": "P ROFESSOR"
+    }
+  }
+}

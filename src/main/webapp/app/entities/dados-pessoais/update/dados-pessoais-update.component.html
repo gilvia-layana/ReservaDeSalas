@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-dados-pessoais-heading"
+        data-cy="DadosPessoaisCreateUpdateHeading"
+        jhiTranslate="reservaApp.dadosPessoais.home.createOrEditLabel"
+      >
+        Create or edit a Dados Pessoais
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.dadosPessoais.endereco" for="field_endereco">Endereco</label>
+          <input type="text" class="form-control" name="endereco" id="field_endereco" data-cy="endereco" formControlName="endereco" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.dadosPessoais.telefone" for="field_telefone">Telefone</label>
+          <input type="text" class="form-control" name="telefone" id="field_telefone" data-cy="telefone" formControlName="telefone" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.dadosPessoais.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.dadosPessoais.aLUNO" for="field_aLUNO">A LUNO</label>
+          <select class="form-control" id="field_aLUNO" data-cy="aLUNO" name="aLUNO" formControlName="aLUNO">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="aLUNOOption.id === editForm.get('aLUNO')!.value?.id ? editForm.get('aLUNO')!.value : aLUNOOption"
+              *ngFor="let aLUNOOption of aLUNOSSharedCollection; trackBy: trackALUNOById"
+            >
+              {{ aLUNOOption.matriculaAluno }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.dadosPessoais.pROFESSOR" for="field_pROFESSOR">P ROFESSOR</label>
+          <select class="form-control" id="field_pROFESSOR" data-cy="pROFESSOR" name="pROFESSOR" formControlName="pROFESSOR">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="pROFESSOROption.id === editForm.get('pROFESSOR')!.value?.id ? editForm.get('pROFESSOR')!.value : pROFESSOROption"
+              *ngFor="let pROFESSOROption of pROFESSORSSharedCollection; trackBy: trackPROFESSORById"
+            >
+              {{ pROFESSOROption.matriculaProf }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

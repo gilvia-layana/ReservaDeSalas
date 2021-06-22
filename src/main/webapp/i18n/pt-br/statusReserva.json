@@ -1,0 +1,10 @@
+{
+  "reservaApp": {
+    "StatusReserva": {
+      "null": "",
+      "Confirmada": "Confirmada",
+      "Cancelada": "Cancelada",
+      "EmAnalise": "EmAnalise"
+    }
+  }
+}

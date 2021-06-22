@@ -1,0 +1,28 @@
+{
+  "reservaApp": {
+    "dadosPessoais": {
+      "home": {
+        "title": "Dados Pessoais",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Dados Pessoais",
+        "createOrEditLabel": "Criar ou editar Dados Pessoais",
+        "notFound": "Nenhum Dados Pessoais encontrado"
+      },
+      "created": "Um novo Dados Pessoais foi criado com o identificador {{ param }}",
+      "updated": "Um Dados Pessoais foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Dados Pessoais foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Dados Pessoais {{ id }}?"
+      },
+      "detail": {
+        "title": "Dados Pessoais"
+      },
+      "id": "ID",
+      "endereco": "Endereco",
+      "telefone": "Telefone",
+      "email": "Email",
+      "aLUNO": "A LUNO",
+      "pROFESSOR": "P ROFESSOR"
+    }
+  }
+}

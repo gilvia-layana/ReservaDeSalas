@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="rESERVA">
+      <h2 data-cy="rESERVADetailsHeading"><span jhiTranslate="reservaApp.rESERVA.detail.title">RESERVA</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ rESERVA.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.rESERVA.codReserva">Cod Reserva</span></dt>
+        <dd>
+          <span>{{ rESERVA.codReserva }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.rESERVA.dataReserva">Data Reserva</span></dt>
+        <dd>
+          <span>{{ rESERVA.dataReserva | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.rESERVA.horarioInicio">Horario Inicio</span></dt>
+        <dd>
+          <span>{{ rESERVA.horarioInicio | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.rESERVA.horarioFinal">Horario Final</span></dt>
+        <dd>
+          <span>{{ rESERVA.horarioFinal | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.rESERVA.dataSolicitacao">Data Solicitacao</span></dt>
+        <dd>
+          <span>{{ rESERVA.dataSolicitacao | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.rESERVA.horarioDaSolicitacao">Horario Da Solicitacao</span></dt>
+        <dd>
+          <span>{{ rESERVA.horarioDaSolicitacao | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.rESERVA.statusReservaSala">Status Reserva Sala</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'reservaApp.StatusReserva.' + rESERVA.statusReservaSala }}">{{ rESERVA.statusReservaSala }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.rESERVA.sALA">S ALA</span></dt>
+        <dd>
+          <div *ngIf="rESERVA.sALA">
+            <a [routerLink]="['/sala', rESERVA.sALA?.id, 'view']">{{ rESERVA.sALA?.codSala }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.rESERVA.cONSULTA">C ONSULTA</span></dt>
+        <dd>
+          <div *ngIf="rESERVA.cONSULTA">
+            <a [routerLink]="['/consulta', rESERVA.cONSULTA?.id, 'view']">{{ rESERVA.cONSULTA?.codConsulta }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.rESERVA.pROFESSOR">P ROFESSOR</span></dt>
+        <dd>
+          <div *ngIf="rESERVA.pROFESSOR">
+            <a [routerLink]="['/professor', rESERVA.pROFESSOR?.id, 'view']">{{ rESERVA.pROFESSOR?.matriculaProf }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.rESERVA.pROFESSOR">P ROFESSOR</span></dt>
+        <dd>
+          <div *ngIf="rESERVA.pROFESSOR">
+            <a [routerLink]="['/professor', rESERVA.pROFESSOR?.id, 'view']">{{ rESERVA.pROFESSOR?.disciplina }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/reserva', rESERVA.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

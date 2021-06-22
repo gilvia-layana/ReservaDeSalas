@@ -1,0 +1,40 @@
+{
+  "name": "PROFESSOR",
+  "fields": [
+    {
+      "fieldName": "matriculaProf",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "disciplina",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "faculdade",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "dadosPessoais",
+      "otherEntityRelationshipName": "pROFESSOR",
+      "relationshipName": "dadosPessoais"
+    }
+  ],
+  "entityTableName": "professor",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210622232102"
+}

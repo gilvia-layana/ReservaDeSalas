@@ -1,0 +1,10 @@
+{
+  "reservaApp": {
+    "Area": {
+      "null": "",
+      "HUMANAS": "HUMANAS",
+      "EXATAS": "EXATAS",
+      "BIOLOGICAS": "BIOLOGICAS"
+    }
+  }
+}

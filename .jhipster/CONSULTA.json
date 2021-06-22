@@ -1,0 +1,33 @@
+{
+  "name": "CONSULTA",
+  "fields": [
+    {
+      "fieldName": "nomeAluno",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codConsulta",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "aLUNO",
+      "otherEntityRelationshipName": "cONSULTA",
+      "relationshipName": "aLUNO",
+      "otherEntityField": "matriculaAluno"
+    }
+  ],
+  "entityTableName": "consulta",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210622232105"
+}

@@ -1,0 +1,73 @@
+entity SALA {
+	CodSala Integer required,
+    Nome String,
+    Local String,
+    Status StatusSala
+}
+
+entity DadosPessoais{
+	Endereco String,
+    Telefone String,
+    Email String
+}
+
+entity PROFESSOR {
+	MatriculaProf Integer required,
+	Nome String,
+    Disciplina String,
+    Faculdade String
+}
+
+entity ALUNO {
+	MatriculaAluno Integer required,
+	Nome String,
+    AreaDeConhecimento Area,
+    Curso String
+}
+
+enum Area{
+	HUMANAS
+	EXATAS
+	BIOLOGICAS
+}
+
+enum StatusSala{
+	Livre
+	Ocupada
+	FechadaParaManutencao
+}
+
+enum StatusReserva{
+	Confirmada
+	Cancelada
+	EmAnalise
+}
+
+entity RESERVA {
+	CodReserva Integer required,
+	DataReserva LocalDate,
+    HorarioInicio ZonedDateTime,
+    HorarioFinal ZonedDateTime,
+    DataSolicitacao ZonedDateTime,
+    HorarioDaSolicitacao ZonedDateTime,
+    StatusReservaSala StatusReserva
+}
+
+entity CONSULTA {
+	NomeAluno String,
+    CodConsulta Integer required,
+}
+
+relationship ManyToOne {
+	RESERVA {SALA(CodSala)} to SALA
+    CONSULTA {ALUNO(MatriculaAluno)} to ALUNO
+    RESERVA {CONSULTA(CodConsulta)} to CONSULTA
+    RESERVA {PROFESSOR(MatriculaProf)} to PROFESSOR
+    RESERVA {PROFESSOR(Disciplina)} to PROFESSOR
+}
+
+relationship OneToMany {
+	ALUNO to DadosPessoais{ALUNO(MatriculaAluno)}
+    PROFESSOR to DadosPessoais{PROFESSOR(MatriculaProf)}
+}
+

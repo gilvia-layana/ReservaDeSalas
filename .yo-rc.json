@@ -42,7 +42,9 @@
     "jwtSecretKey": "MGIwY2VhNmIxYjAxOTExZGI4NGQ3NDRhMTEwMjk3Mzk1Y2ExYmVkNTc2YWIyNGE5OTdkMjNkNGM1ZDdiY2U4ZTBiYTZiZDM5NTEyNDM4N2FkNDY5ZThkZTAyNWExOTQzNDdmNGIzYzY4YzVmYjNlYmU0YmEwNGM5OWE4N2IxYzU=",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "reactive": false
+    "reactive": false,
+    "entities": ["SALA", "DadosPessoais", "PROFESSOR", "ALUNO", "RESERVA", "CONSULTA"],
+    "lastLiquibaseTimestamp": 1624404065000
   },
   "git-provider": "GitHub",
   "git-company": "gilvia-layana",

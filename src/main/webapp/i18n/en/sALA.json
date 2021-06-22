@@ -1,0 +1,27 @@
+{
+  "reservaApp": {
+    "sALA": {
+      "home": {
+        "title": "SALAS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new SALA",
+        "createOrEditLabel": "Create or edit a SALA",
+        "notFound": "No SALAS found"
+      },
+      "created": "A new SALA is created with identifier {{ param }}",
+      "updated": "A SALA is updated with identifier {{ param }}",
+      "deleted": "A SALA is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete SALA {{ id }}?"
+      },
+      "detail": {
+        "title": "SALA"
+      },
+      "id": "ID",
+      "codSala": "Cod Sala",
+      "nome": "Nome",
+      "local": "Local",
+      "status": "Status"
+    }
+  }
+}

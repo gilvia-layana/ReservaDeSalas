@@ -1,0 +1,26 @@
+{
+  "reservaApp": {
+    "cONSULTA": {
+      "home": {
+        "title": "CONSULTAS",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo CONSULTA",
+        "createOrEditLabel": "Criar ou editar CONSULTA",
+        "notFound": "Nenhum CONSULTA encontrado"
+      },
+      "created": "Um novo CONSULTA foi criado com o identificador {{ param }}",
+      "updated": "Um CONSULTA foi atualizado com o identificador {{ param }}",
+      "deleted": "Um CONSULTA foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir CONSULTA {{ id }}?"
+      },
+      "detail": {
+        "title": "CONSULTA"
+      },
+      "id": "ID",
+      "nomeAluno": "Nome Aluno",
+      "codConsulta": "Cod Consulta",
+      "aLUNO": "A LUNO"
+    }
+  }
+}
