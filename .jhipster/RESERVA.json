@@ -1,0 +1,75 @@
+{
+  "name": "RESERVA",
+  "fields": [
+    {
+      "fieldName": "codReserva",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dataReserva",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "horarioInicio",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "horarioFinal",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "dataSolicitacao",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "horarioDaSolicitacao",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "statusReservaSala",
+      "fieldType": "StatusReserva",
+      "fieldValues": "Confirmada,Cancelada,EmAnalise"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sALA",
+      "otherEntityRelationshipName": "rESERVA",
+      "relationshipName": "sALA",
+      "otherEntityField": "codSala"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cONSULTA",
+      "otherEntityRelationshipName": "rESERVA",
+      "relationshipName": "cONSULTA",
+      "otherEntityField": "codConsulta"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pROFESSOR",
+      "otherEntityRelationshipName": "rESERVA",
+      "relationshipName": "pROFESSOR",
+      "otherEntityField": "matriculaProf"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pROFESSOR",
+      "otherEntityRelationshipName": "rESERVA",
+      "relationshipName": "pROFESSOR",
+      "otherEntityField": "disciplina"
+    }
+  ],
+  "entityTableName": "reserva",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210622231328"
+}

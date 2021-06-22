@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sALA">
+      <h2 data-cy="sALADetailsHeading"><span jhiTranslate="reservaApp.sALA.detail.title">SALA</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ sALA.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.sALA.codSala">Cod Sala</span></dt>
+        <dd>
+          <span>{{ sALA.codSala }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.sALA.nome">Nome</span></dt>
+        <dd>
+          <span>{{ sALA.nome }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.sALA.local">Local</span></dt>
+        <dd>
+          <span>{{ sALA.local }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.sALA.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'reservaApp.StatusSala.' + sALA.status }}">{{ sALA.status }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sala', sALA.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

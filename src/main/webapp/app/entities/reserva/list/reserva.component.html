@@ -1,0 +1,114 @@
+<div>
+  <h2 id="page-heading" data-cy="RESERVAHeading">
+    <span jhiTranslate="reservaApp.rESERVA.home.title">RESERVAS</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="reservaApp.rESERVA.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-reserva"
+        [routerLink]="['/reserva/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="reservaApp.rESERVA.home.createLabel"> Create a new RESERVA </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="rESERVAS?.length === 0">
+    <span jhiTranslate="reservaApp.rESERVA.home.notFound">No rESERVAS found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="rESERVAS && rESERVAS.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.codReserva">Cod Reserva</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.dataReserva">Data Reserva</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.horarioInicio">Horario Inicio</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.horarioFinal">Horario Final</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.dataSolicitacao">Data Solicitacao</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.horarioDaSolicitacao">Horario Da Solicitacao</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.statusReservaSala">Status Reserva Sala</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.sALA">S ALA</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.cONSULTA">C ONSULTA</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.pROFESSOR">P ROFESSOR</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.pROFESSOR">P ROFESSOR</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rESERVA of rESERVAS; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/reserva', rESERVA.id, 'view']">{{ rESERVA.id }}</a>
+          </td>
+          <td>{{ rESERVA.codReserva }}</td>
+          <td>{{ rESERVA.dataReserva | formatMediumDate }}</td>
+          <td>{{ rESERVA.horarioInicio | formatMediumDatetime }}</td>
+          <td>{{ rESERVA.horarioFinal | formatMediumDatetime }}</td>
+          <td>{{ rESERVA.dataSolicitacao | formatMediumDatetime }}</td>
+          <td>{{ rESERVA.horarioDaSolicitacao | formatMediumDatetime }}</td>
+          <td jhiTranslate="{{ 'reservaApp.StatusReserva.' + rESERVA.statusReservaSala }}">{{ rESERVA.statusReservaSala }}</td>
+          <td>
+            <div *ngIf="rESERVA.sALA">
+              <a [routerLink]="['/sala', rESERVA.sALA?.id, 'view']">{{ rESERVA.sALA?.codSala }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="rESERVA.cONSULTA">
+              <a [routerLink]="['/consulta', rESERVA.cONSULTA?.id, 'view']">{{ rESERVA.cONSULTA?.codConsulta }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="rESERVA.pROFESSOR">
+              <a [routerLink]="['/professor', rESERVA.pROFESSOR?.id, 'view']">{{ rESERVA.pROFESSOR?.matriculaProf }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="rESERVA.pROFESSOR">
+              <a [routerLink]="['/professor', rESERVA.pROFESSOR?.id, 'view']">{{ rESERVA.pROFESSOR?.disciplina }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/reserva', rESERVA.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/reserva', rESERVA.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(rESERVA)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

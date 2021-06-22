@@ -1,0 +1,10 @@
+{
+  "reservaApp": {
+    "StatusSala": {
+      "null": "",
+      "Livre": "Livre",
+      "Ocupada": "Ocupada",
+      "FechadaParaManutencao": "FechadaParaManutencao"
+    }
+  }
+}

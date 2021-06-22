@@ -1,0 +1,41 @@
+{
+  "name": "ALUNO",
+  "fields": [
+    {
+      "fieldName": "matriculaAluno",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "areaDeConhecimento",
+      "fieldType": "Area",
+      "fieldValues": "HUMANAS,EXATAS,BIOLOGICAS"
+    },
+    {
+      "fieldName": "curso",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "dadosPessoais",
+      "otherEntityRelationshipName": "aLUNO",
+      "relationshipName": "dadosPessoais"
+    }
+  ],
+  "entityTableName": "aluno",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210622231327"
+}

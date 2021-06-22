@@ -1,0 +1,28 @@
+{
+  "reservaApp": {
+    "aLUNO": {
+      "home": {
+        "title": "ALUNOS",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo ALUNO",
+        "createOrEditLabel": "Criar ou editar ALUNO",
+        "notFound": "Nenhum ALUNO encontrado"
+      },
+      "created": "Um novo ALUNO foi criado com o identificador {{ param }}",
+      "updated": "Um ALUNO foi atualizado com o identificador {{ param }}",
+      "deleted": "Um ALUNO foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir ALUNO {{ id }}?"
+      },
+      "detail": {
+        "title": "ALUNO"
+      },
+      "id": "ID",
+      "matriculaAluno": "Matricula Aluno",
+      "nome": "Nome",
+      "areaDeConhecimento": "Area De Conhecimento",
+      "curso": "Curso",
+      "dadosPessoais": "Dados Pessoais"
+    }
+  }
+}

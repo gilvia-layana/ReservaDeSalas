@@ -1,0 +1,34 @@
+{
+  "name": "SALA",
+  "fields": [
+    {
+      "fieldName": "codSala",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "local",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "StatusSala",
+      "fieldValues": "Livre,Ocupada,FechadaParaManutencao"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "sala",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210622231324"
+}
