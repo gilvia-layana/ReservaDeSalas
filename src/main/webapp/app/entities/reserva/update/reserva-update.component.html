@@ -1,0 +1,217 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-reserva-heading" data-cy="RESERVACreateUpdateHeading" jhiTranslate="reservaApp.rESERVA.home.createOrEditLabel">
+        Create or edit a RESERVA
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.codReserva" for="field_codReserva">Cod Reserva</label>
+          <input
+            type="number"
+            class="form-control"
+            name="codReserva"
+            id="field_codReserva"
+            data-cy="codReserva"
+            formControlName="codReserva"
+          />
+          <div *ngIf="editForm.get('codReserva')!.invalid && (editForm.get('codReserva')!.dirty || editForm.get('codReserva')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('codReserva')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('codReserva')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.dataReserva" for="field_dataReserva">Data Reserva</label>
+          <div class="input-group">
+            <input
+              id="field_dataReserva"
+              data-cy="dataReserva"
+              type="text"
+              class="form-control"
+              name="dataReserva"
+              ngbDatepicker
+              #dataReservaDp="ngbDatepicker"
+              formControlName="dataReserva"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dataReservaDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.horarioInicio" for="field_horarioInicio">Horario Inicio</label>
+          <div class="d-flex">
+            <input
+              id="field_horarioInicio"
+              data-cy="horarioInicio"
+              type="datetime-local"
+              class="form-control"
+              name="horarioInicio"
+              formControlName="horarioInicio"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.horarioFinal" for="field_horarioFinal">Horario Final</label>
+          <div class="d-flex">
+            <input
+              id="field_horarioFinal"
+              data-cy="horarioFinal"
+              type="datetime-local"
+              class="form-control"
+              name="horarioFinal"
+              formControlName="horarioFinal"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.dataSolicitacao" for="field_dataSolicitacao"
+            >Data Solicitacao</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dataSolicitacao"
+              data-cy="dataSolicitacao"
+              type="datetime-local"
+              class="form-control"
+              name="dataSolicitacao"
+              formControlName="dataSolicitacao"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.horarioDaSolicitacao" for="field_horarioDaSolicitacao"
+            >Horario Da Solicitacao</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_horarioDaSolicitacao"
+              data-cy="horarioDaSolicitacao"
+              type="datetime-local"
+              class="form-control"
+              name="horarioDaSolicitacao"
+              formControlName="horarioDaSolicitacao"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.statusReservaSala" for="field_statusReservaSala"
+            >Status Reserva Sala</label
+          >
+          <select
+            class="form-control"
+            name="statusReservaSala"
+            formControlName="statusReservaSala"
+            id="field_statusReservaSala"
+            data-cy="statusReservaSala"
+          >
+            <option [ngValue]="null">{{ 'reservaApp.StatusReserva.null' | translate }}</option>
+            <option value="Confirmada">{{ 'reservaApp.StatusReserva.Confirmada' | translate }}</option>
+            <option value="Cancelada">{{ 'reservaApp.StatusReserva.Cancelada' | translate }}</option>
+            <option value="EmAnalise">{{ 'reservaApp.StatusReserva.EmAnalise' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.sALA" for="field_sALA">S ALA</label>
+          <select class="form-control" id="field_sALA" data-cy="sALA" name="sALA" formControlName="sALA">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="sALAOption.id === editForm.get('sALA')!.value?.id ? editForm.get('sALA')!.value : sALAOption"
+              *ngFor="let sALAOption of sALASSharedCollection; trackBy: trackSALAById"
+            >
+              {{ sALAOption.codSala }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.cONSULTA" for="field_cONSULTA">C ONSULTA</label>
+          <select class="form-control" id="field_cONSULTA" data-cy="cONSULTA" name="cONSULTA" formControlName="cONSULTA">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="cONSULTAOption.id === editForm.get('cONSULTA')!.value?.id ? editForm.get('cONSULTA')!.value : cONSULTAOption"
+              *ngFor="let cONSULTAOption of cONSULTASSharedCollection; trackBy: trackCONSULTAById"
+            >
+              {{ cONSULTAOption.codConsulta }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.pROFESSOR" for="field_pROFESSOR">P ROFESSOR</label>
+          <select class="form-control" id="field_pROFESSOR" data-cy="pROFESSOR" name="pROFESSOR" formControlName="pROFESSOR">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="pROFESSOROption.id === editForm.get('pROFESSOR')!.value?.id ? editForm.get('pROFESSOR')!.value : pROFESSOROption"
+              *ngFor="let pROFESSOROption of pROFESSORSSharedCollection; trackBy: trackPROFESSORById"
+            >
+              {{ pROFESSOROption.matriculaProf }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.pROFESSOR" for="field_pROFESSOR">P ROFESSOR</label>
+          <select class="form-control" id="field_pROFESSOR" data-cy="pROFESSOR" name="pROFESSOR" formControlName="pROFESSOR">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="pROFESSOROption.id === editForm.get('pROFESSOR')!.value?.id ? editForm.get('pROFESSOR')!.value : pROFESSOROption"
+              *ngFor="let pROFESSOROption of pROFESSORSSharedCollection; trackBy: trackPROFESSORById"
+            >
+              {{ pROFESSOROption.disciplina }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

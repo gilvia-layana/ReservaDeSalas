@@ -1,0 +1,28 @@
+{
+  "reservaApp": {
+    "aLUNO": {
+      "home": {
+        "title": "ALUNOS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new ALUNO",
+        "createOrEditLabel": "Create or edit a ALUNO",
+        "notFound": "No ALUNOS found"
+      },
+      "created": "A new ALUNO is created with identifier {{ param }}",
+      "updated": "A ALUNO is updated with identifier {{ param }}",
+      "deleted": "A ALUNO is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete ALUNO {{ id }}?"
+      },
+      "detail": {
+        "title": "ALUNO"
+      },
+      "id": "ID",
+      "matriculaAluno": "Matricula Aluno",
+      "nome": "Nome",
+      "areaDeConhecimento": "Area De Conhecimento",
+      "curso": "Curso",
+      "dadosPessoais": "Dados Pessoais"
+    }
+  }
+}

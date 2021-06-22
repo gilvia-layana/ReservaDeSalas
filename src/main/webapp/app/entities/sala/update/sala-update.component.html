@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-sala-heading" data-cy="SALACreateUpdateHeading" jhiTranslate="reservaApp.sALA.home.createOrEditLabel">
+        Create or edit a SALA
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.sALA.codSala" for="field_codSala">Cod Sala</label>
+          <input type="number" class="form-control" name="codSala" id="field_codSala" data-cy="codSala" formControlName="codSala" />
+          <div *ngIf="editForm.get('codSala')!.invalid && (editForm.get('codSala')!.dirty || editForm.get('codSala')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('codSala')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('codSala')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.sALA.nome" for="field_nome">Nome</label>
+          <input type="text" class="form-control" name="nome" id="field_nome" data-cy="nome" formControlName="nome" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.sALA.local" for="field_local">Local</label>
+          <input type="text" class="form-control" name="local" id="field_local" data-cy="local" formControlName="local" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.sALA.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'reservaApp.StatusSala.null' | translate }}</option>
+            <option value="Livre">{{ 'reservaApp.StatusSala.Livre' | translate }}</option>
+            <option value="Ocupada">{{ 'reservaApp.StatusSala.Ocupada' | translate }}</option>
+            <option value="FechadaParaManutencao">{{ 'reservaApp.StatusSala.FechadaParaManutencao' | translate }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "reservaApp": {
+    "pROFESSOR": {
+      "home": {
+        "title": "PROFESSORS",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo PROFESSOR",
+        "createOrEditLabel": "Criar ou editar PROFESSOR",
+        "notFound": "Nenhum PROFESSOR encontrado"
+      },
+      "created": "Um novo PROFESSOR foi criado com o identificador {{ param }}",
+      "updated": "Um PROFESSOR foi atualizado com o identificador {{ param }}",
+      "deleted": "Um PROFESSOR foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir PROFESSOR {{ id }}?"
+      },
+      "detail": {
+        "title": "PROFESSOR"
+      },
+      "id": "ID",
+      "matriculaProf": "Matricula Prof",
+      "nome": "Nome",
+      "disciplina": "Disciplina",
+      "faculdade": "Faculdade",
+      "dadosPessoais": "Dados Pessoais"
+    }
+  }
+}
