@@ -57,7 +57,6 @@ export class RESERVAUpdateComponent implements OnInit {
         const today = dayjs().startOf('day');
         rESERVA.horarioInicio = today;
         rESERVA.horarioFinal = today;
-        rESERVA.dataSolicitacao = today;
         rESERVA.horarioDaSolicitacao = today;
       }
 
@@ -119,7 +118,7 @@ export class RESERVAUpdateComponent implements OnInit {
       dataReserva: rESERVA.dataReserva,
       horarioInicio: rESERVA.horarioInicio ? rESERVA.horarioInicio.format(DATE_TIME_FORMAT) : null,
       horarioFinal: rESERVA.horarioFinal ? rESERVA.horarioFinal.format(DATE_TIME_FORMAT) : null,
-      dataSolicitacao: rESERVA.dataSolicitacao ? rESERVA.dataSolicitacao.format(DATE_TIME_FORMAT) : null,
+      dataSolicitacao: rESERVA.dataSolicitacao,
       horarioDaSolicitacao: rESERVA.horarioDaSolicitacao ? rESERVA.horarioDaSolicitacao.format(DATE_TIME_FORMAT) : null,
       statusReservaSala: rESERVA.statusReservaSala,
       sALA: rESERVA.sALA,
@@ -178,9 +177,7 @@ export class RESERVAUpdateComponent implements OnInit {
       horarioFinal: this.editForm.get(['horarioFinal'])!.value
         ? dayjs(this.editForm.get(['horarioFinal'])!.value, DATE_TIME_FORMAT)
         : undefined,
-      dataSolicitacao: this.editForm.get(['dataSolicitacao'])!.value
-        ? dayjs(this.editForm.get(['dataSolicitacao'])!.value, DATE_TIME_FORMAT)
-        : undefined,
+      dataSolicitacao: this.editForm.get(['dataSolicitacao'])!.value,
       horarioDaSolicitacao: this.editForm.get(['horarioDaSolicitacao'])!.value
         ? dayjs(this.editForm.get(['horarioDaSolicitacao'])!.value, DATE_TIME_FORMAT)
         : undefined,

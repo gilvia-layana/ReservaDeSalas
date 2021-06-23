@@ -8,7 +8,7 @@
     },
     {
       "fieldName": "dataDaConsulta",
-      "fieldType": "ZonedDateTime"
+      "fieldType": "LocalDate"
     },
     {
       "fieldName": "horarioDaConsulta",

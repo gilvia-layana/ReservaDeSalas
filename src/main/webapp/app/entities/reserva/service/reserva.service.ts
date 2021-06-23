@@ -79,7 +79,7 @@ export class RESERVAService {
       dataReserva: rESERVA.dataReserva?.isValid() ? rESERVA.dataReserva.format(DATE_FORMAT) : undefined,
       horarioInicio: rESERVA.horarioInicio?.isValid() ? rESERVA.horarioInicio.toJSON() : undefined,
       horarioFinal: rESERVA.horarioFinal?.isValid() ? rESERVA.horarioFinal.toJSON() : undefined,
-      dataSolicitacao: rESERVA.dataSolicitacao?.isValid() ? rESERVA.dataSolicitacao.toJSON() : undefined,
+      dataSolicitacao: rESERVA.dataSolicitacao?.isValid() ? rESERVA.dataSolicitacao.format(DATE_FORMAT) : undefined,
       horarioDaSolicitacao: rESERVA.horarioDaSolicitacao?.isValid() ? rESERVA.horarioDaSolicitacao.toJSON() : undefined,
     });
   }

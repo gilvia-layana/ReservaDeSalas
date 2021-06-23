@@ -10,6 +10,7 @@ import com.mycompany.myapp.IntegrationTest;
 import com.mycompany.myapp.domain.CONSULTA;
 import com.mycompany.myapp.repository.CONSULTARepository;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
@@ -37,8 +38,8 @@ class CONSULTAResourceIT {
     private static final Integer DEFAULT_COD_CONSULTA = 1;
     private static final Integer UPDATED_COD_CONSULTA = 2;
 
-    private static final ZonedDateTime DEFAULT_DATA_DA_CONSULTA = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_DATA_DA_CONSULTA = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final LocalDate DEFAULT_DATA_DA_CONSULTA = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATA_DA_CONSULTA = LocalDate.now(ZoneId.systemDefault());
 
     private static final ZonedDateTime DEFAULT_HORARIO_DA_CONSULTA = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_HORARIO_DA_CONSULTA = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
@@ -159,7 +160,7 @@ class CONSULTAResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(cONSULTA.getId().intValue())))
             .andExpect(jsonPath("$.[*].codConsulta").value(hasItem(DEFAULT_COD_CONSULTA)))
-            .andExpect(jsonPath("$.[*].dataDaConsulta").value(hasItem(sameInstant(DEFAULT_DATA_DA_CONSULTA))))
+            .andExpect(jsonPath("$.[*].dataDaConsulta").value(hasItem(DEFAULT_DATA_DA_CONSULTA.toString())))
             .andExpect(jsonPath("$.[*].horarioDaConsulta").value(hasItem(sameInstant(DEFAULT_HORARIO_DA_CONSULTA))));
     }
 
@@ -176,7 +177,7 @@ class CONSULTAResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(cONSULTA.getId().intValue()))
             .andExpect(jsonPath("$.codConsulta").value(DEFAULT_COD_CONSULTA))
-            .andExpect(jsonPath("$.dataDaConsulta").value(sameInstant(DEFAULT_DATA_DA_CONSULTA)))
+            .andExpect(jsonPath("$.dataDaConsulta").value(DEFAULT_DATA_DA_CONSULTA.toString()))
             .andExpect(jsonPath("$.horarioDaConsulta").value(sameInstant(DEFAULT_HORARIO_DA_CONSULTA)));
     }
 

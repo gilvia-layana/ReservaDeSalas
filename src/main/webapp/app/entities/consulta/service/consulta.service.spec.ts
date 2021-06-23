@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import * as dayjs from 'dayjs';
 
-import { DATE_TIME_FORMAT } from 'app/config/input.constants';
+import { DATE_FORMAT, DATE_TIME_FORMAT } from 'app/config/input.constants';
 import { ICONSULTA, CONSULTA } from '../consulta.model';
 
 import { CONSULTAService } from './consulta.service';
@@ -36,7 +36,7 @@ describe('Service Tests', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
-            dataDaConsulta: currentDate.format(DATE_TIME_FORMAT),
+            dataDaConsulta: currentDate.format(DATE_FORMAT),
             horarioDaConsulta: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
@@ -53,7 +53,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            dataDaConsulta: currentDate.format(DATE_TIME_FORMAT),
+            dataDaConsulta: currentDate.format(DATE_FORMAT),
             horarioDaConsulta: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
@@ -79,7 +79,7 @@ describe('Service Tests', () => {
           {
             id: 1,
             codConsulta: 1,
-            dataDaConsulta: currentDate.format(DATE_TIME_FORMAT),
+            dataDaConsulta: currentDate.format(DATE_FORMAT),
             horarioDaConsulta: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
@@ -131,7 +131,7 @@ describe('Service Tests', () => {
           {
             id: 1,
             codConsulta: 1,
-            dataDaConsulta: currentDate.format(DATE_TIME_FORMAT),
+            dataDaConsulta: currentDate.format(DATE_FORMAT),
             horarioDaConsulta: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault

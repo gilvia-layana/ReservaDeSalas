@@ -26,7 +26,7 @@
             <column name="horario_final" type="${datetimeType}">
                 <constraints nullable="true" />
             </column>
-            <column name="data_solicitacao" type="${datetimeType}">
+            <column name="data_solicitacao" type="date">
                 <constraints nullable="true" />
             </column>
             <column name="horario_da_solicitacao" type="${datetimeType}">
@@ -48,7 +48,6 @@
         </createTable>
         <dropDefaultValue tableName="reserva" columnName="horario_inicio" columnDataType="${datetimeType}"/>
         <dropDefaultValue tableName="reserva" columnName="horario_final" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="reserva" columnName="data_solicitacao" columnDataType="${datetimeType}"/>
         <dropDefaultValue tableName="reserva" columnName="horario_da_solicitacao" columnDataType="${datetimeType}"/>
     </changeSet>
 
@@ -72,7 +71,7 @@
             <column name="data_reserva" type="date"/>
             <column name="horario_inicio" type="${datetimeType}"/>
             <column name="horario_final" type="${datetimeType}"/>
-            <column name="data_solicitacao" type="${datetimeType}"/>
+            <column name="data_solicitacao" type="date"/>
             <column name="horario_da_solicitacao" type="${datetimeType}"/>
             <column name="status_reserva_sala" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->

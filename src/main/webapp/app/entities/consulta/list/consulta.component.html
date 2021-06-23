@@ -46,7 +46,7 @@
             <a [routerLink]="['/consulta', cONSULTA.id, 'view']">{{ cONSULTA.id }}</a>
           </td>
           <td>{{ cONSULTA.codConsulta }}</td>
-          <td>{{ cONSULTA.dataDaConsulta | formatMediumDatetime }}</td>
+          <td>{{ cONSULTA.dataDaConsulta | formatMediumDate }}</td>
           <td>{{ cONSULTA.horarioDaConsulta | formatMediumDatetime }}</td>
           <td>
             <div *ngIf="cONSULTA.aLUNO">

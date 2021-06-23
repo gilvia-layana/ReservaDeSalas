@@ -45,16 +45,22 @@
           <label class="form-control-label" jhiTranslate="reservaApp.cONSULTA.dataDaConsulta" for="field_dataDaConsulta"
             >Data Da Consulta</label
           >
-          <div class="d-flex">
+          <div class="input-group">
             <input
               id="field_dataDaConsulta"
               data-cy="dataDaConsulta"
-              type="datetime-local"
+              type="text"
               class="form-control"
               name="dataDaConsulta"
+              ngbDatepicker
+              #dataDaConsultaDp="ngbDatepicker"
               formControlName="dataDaConsulta"
-              placeholder="YYYY-MM-DD HH:mm"
             />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dataDaConsultaDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
           </div>
         </div>
 

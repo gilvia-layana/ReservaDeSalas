@@ -48,8 +48,8 @@ class RESERVAResourceIT {
     private static final ZonedDateTime DEFAULT_HORARIO_FINAL = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_HORARIO_FINAL = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final ZonedDateTime DEFAULT_DATA_SOLICITACAO = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
-    private static final ZonedDateTime UPDATED_DATA_SOLICITACAO = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final LocalDate DEFAULT_DATA_SOLICITACAO = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATA_SOLICITACAO = LocalDate.now(ZoneId.systemDefault());
 
     private static final ZonedDateTime DEFAULT_HORARIO_DA_SOLICITACAO = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_HORARIO_DA_SOLICITACAO = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
@@ -188,7 +188,7 @@ class RESERVAResourceIT {
             .andExpect(jsonPath("$.[*].dataReserva").value(hasItem(DEFAULT_DATA_RESERVA.toString())))
             .andExpect(jsonPath("$.[*].horarioInicio").value(hasItem(sameInstant(DEFAULT_HORARIO_INICIO))))
             .andExpect(jsonPath("$.[*].horarioFinal").value(hasItem(sameInstant(DEFAULT_HORARIO_FINAL))))
-            .andExpect(jsonPath("$.[*].dataSolicitacao").value(hasItem(sameInstant(DEFAULT_DATA_SOLICITACAO))))
+            .andExpect(jsonPath("$.[*].dataSolicitacao").value(hasItem(DEFAULT_DATA_SOLICITACAO.toString())))
             .andExpect(jsonPath("$.[*].horarioDaSolicitacao").value(hasItem(sameInstant(DEFAULT_HORARIO_DA_SOLICITACAO))))
             .andExpect(jsonPath("$.[*].statusReservaSala").value(hasItem(DEFAULT_STATUS_RESERVA_SALA.toString())));
     }
@@ -209,7 +209,7 @@ class RESERVAResourceIT {
             .andExpect(jsonPath("$.dataReserva").value(DEFAULT_DATA_RESERVA.toString()))
             .andExpect(jsonPath("$.horarioInicio").value(sameInstant(DEFAULT_HORARIO_INICIO)))
             .andExpect(jsonPath("$.horarioFinal").value(sameInstant(DEFAULT_HORARIO_FINAL)))
-            .andExpect(jsonPath("$.dataSolicitacao").value(sameInstant(DEFAULT_DATA_SOLICITACAO)))
+            .andExpect(jsonPath("$.dataSolicitacao").value(DEFAULT_DATA_SOLICITACAO.toString()))
             .andExpect(jsonPath("$.horarioDaSolicitacao").value(sameInstant(DEFAULT_HORARIO_DA_SOLICITACAO)))
             .andExpect(jsonPath("$.statusReservaSala").value(DEFAULT_STATUS_RESERVA_SALA.toString()));
     }
