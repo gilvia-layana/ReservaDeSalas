@@ -2,13 +2,17 @@
   "name": "CONSULTA",
   "fields": [
     {
-      "fieldName": "nomeAluno",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "codConsulta",
       "fieldType": "Integer",
       "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dataDaConsulta",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "horarioDaConsulta",
+      "fieldType": "ZonedDateTime"
     }
   ],
   "relationships": [

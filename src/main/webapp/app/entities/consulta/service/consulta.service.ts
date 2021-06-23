@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import * as dayjs from 'dayjs';
 
 import { isPresent } from 'app/core/util/operators';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
@@ -17,26 +19,37 @@ export class CONSULTAService {
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
   create(cONSULTA: ICONSULTA): Observable<EntityResponseType> {
-    return this.http.post<ICONSULTA>(this.resourceUrl, cONSULTA, { observe: 'response' });
+    const copy = this.convertDateFromClient(cONSULTA);
+    return this.http
+      .post<ICONSULTA>(this.resourceUrl, copy, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
   update(cONSULTA: ICONSULTA): Observable<EntityResponseType> {
-    return this.http.put<ICONSULTA>(`${this.resourceUrl}/${getCONSULTAIdentifier(cONSULTA) as number}`, cONSULTA, { observe: 'response' });
+    const copy = this.convertDateFromClient(cONSULTA);
+    return this.http
+      .put<ICONSULTA>(`${this.resourceUrl}/${getCONSULTAIdentifier(cONSULTA) as number}`, copy, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
   partialUpdate(cONSULTA: ICONSULTA): Observable<EntityResponseType> {
-    return this.http.patch<ICONSULTA>(`${this.resourceUrl}/${getCONSULTAIdentifier(cONSULTA) as number}`, cONSULTA, {
-      observe: 'response',
-    });
+    const copy = this.convertDateFromClient(cONSULTA);
+    return this.http
+      .patch<ICONSULTA>(`${this.resourceUrl}/${getCONSULTAIdentifier(cONSULTA) as number}`, copy, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
   find(id: number): Observable<EntityResponseType> {
-    return this.http.get<ICONSULTA>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    return this.http
+      .get<ICONSULTA>(`${this.resourceUrl}/${id}`, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
-    return this.http.get<ICONSULTA[]>(this.resourceUrl, { params: options, observe: 'response' });
+    return this.http
+      .get<ICONSULTA[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
@@ -58,5 +71,30 @@ export class CONSULTAService {
       return [...cONSULTASToAdd, ...cONSULTACollection];
     }
     return cONSULTACollection;
+  }
+
+  protected convertDateFromClient(cONSULTA: ICONSULTA): ICONSULTA {
+    return Object.assign({}, cONSULTA, {
+      dataDaConsulta: cONSULTA.dataDaConsulta?.isValid() ? cONSULTA.dataDaConsulta.toJSON() : undefined,
+      horarioDaConsulta: cONSULTA.horarioDaConsulta?.isValid() ? cONSULTA.horarioDaConsulta.toJSON() : undefined,
+    });
+  }
+
+  protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
+    if (res.body) {
+      res.body.dataDaConsulta = res.body.dataDaConsulta ? dayjs(res.body.dataDaConsulta) : undefined;
+      res.body.horarioDaConsulta = res.body.horarioDaConsulta ? dayjs(res.body.horarioDaConsulta) : undefined;
+    }
+    return res;
+  }
+
+  protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
+    if (res.body) {
+      res.body.forEach((cONSULTA: ICONSULTA) => {
+        cONSULTA.dataDaConsulta = cONSULTA.dataDaConsulta ? dayjs(cONSULTA.dataDaConsulta) : undefined;
+        cONSULTA.horarioDaConsulta = cONSULTA.horarioDaConsulta ? dayjs(cONSULTA.horarioDaConsulta) : undefined;
+      });
+    }
+    return res;
   }
 }

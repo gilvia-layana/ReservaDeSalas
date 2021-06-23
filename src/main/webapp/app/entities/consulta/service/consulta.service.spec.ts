@@ -1,6 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import * as dayjs from 'dayjs';
 
+import { DATE_TIME_FORMAT } from 'app/config/input.constants';
 import { ICONSULTA, CONSULTA } from '../consulta.model';
 
 import { CONSULTAService } from './consulta.service';
@@ -11,6 +13,7 @@ describe('Service Tests', () => {
     let httpMock: HttpTestingController;
     let elemDefault: ICONSULTA;
     let expectedResult: ICONSULTA | ICONSULTA[] | boolean | null;
+    let currentDate: dayjs.Dayjs;
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -19,17 +22,25 @@ describe('Service Tests', () => {
       expectedResult = null;
       service = TestBed.inject(CONSULTAService);
       httpMock = TestBed.inject(HttpTestingController);
+      currentDate = dayjs();
 
       elemDefault = {
         id: 0,
-        nomeAluno: 'AAAAAAA',
         codConsulta: 0,
+        dataDaConsulta: currentDate,
+        horarioDaConsulta: currentDate,
       };
     });
 
     describe('Service methods', () => {
       it('should find an element', () => {
-        const returnedFromService = Object.assign({}, elemDefault);
+        const returnedFromService = Object.assign(
+          {
+            dataDaConsulta: currentDate.format(DATE_TIME_FORMAT),
+            horarioDaConsulta: currentDate.format(DATE_TIME_FORMAT),
+          },
+          elemDefault
+        );
 
         service.find(123).subscribe(resp => (expectedResult = resp.body));
 
@@ -42,11 +53,19 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
+            dataDaConsulta: currentDate.format(DATE_TIME_FORMAT),
+            horarioDaConsulta: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dataDaConsulta: currentDate,
+            horarioDaConsulta: currentDate,
+          },
+          returnedFromService
+        );
 
         service.create(new CONSULTA()).subscribe(resp => (expectedResult = resp.body));
 
@@ -59,13 +78,20 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 1,
-            nomeAluno: 'BBBBBB',
             codConsulta: 1,
+            dataDaConsulta: currentDate.format(DATE_TIME_FORMAT),
+            horarioDaConsulta: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dataDaConsulta: currentDate,
+            horarioDaConsulta: currentDate,
+          },
+          returnedFromService
+        );
 
         service.update(expected).subscribe(resp => (expectedResult = resp.body));
 
@@ -77,14 +103,21 @@ describe('Service Tests', () => {
       it('should partial update a CONSULTA', () => {
         const patchObject = Object.assign(
           {
-            nomeAluno: 'BBBBBB',
+            codConsulta: 1,
+            horarioDaConsulta: currentDate.format(DATE_TIME_FORMAT),
           },
           new CONSULTA()
         );
 
         const returnedFromService = Object.assign(patchObject, elemDefault);
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dataDaConsulta: currentDate,
+            horarioDaConsulta: currentDate,
+          },
+          returnedFromService
+        );
 
         service.partialUpdate(patchObject).subscribe(resp => (expectedResult = resp.body));
 
@@ -97,13 +130,20 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 1,
-            nomeAluno: 'BBBBBB',
             codConsulta: 1,
+            dataDaConsulta: currentDate.format(DATE_TIME_FORMAT),
+            horarioDaConsulta: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
 
-        const expected = Object.assign({}, returnedFromService);
+        const expected = Object.assign(
+          {
+            dataDaConsulta: currentDate,
+            horarioDaConsulta: currentDate,
+          },
+          returnedFromService
+        );
 
         service.query().subscribe(resp => (expectedResult = resp.body));
 
@@ -150,7 +190,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique CONSULTA to an array', () => {
-          const cONSULTAArray: ICONSULTA[] = [{ id: 123 }, { id: 456 }, { id: 72623 }];
+          const cONSULTAArray: ICONSULTA[] = [{ id: 123 }, { id: 456 }, { id: 22091 }];
           const cONSULTACollection: ICONSULTA[] = [{ id: 123 }];
           expectedResult = service.addCONSULTAToCollectionIfMissing(cONSULTACollection, ...cONSULTAArray);
           expect(expectedResult).toHaveLength(3);

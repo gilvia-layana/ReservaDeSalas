@@ -1,5 +1,6 @@
 package com.mycompany.myapp.web.rest;
 
+import static com.mycompany.myapp.web.rest.TestUtil.sameInstant;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -8,6 +9,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.mycompany.myapp.IntegrationTest;
 import com.mycompany.myapp.domain.CONSULTA;
 import com.mycompany.myapp.repository.CONSULTARepository;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -29,11 +34,14 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class CONSULTAResourceIT {
 
-    private static final String DEFAULT_NOME_ALUNO = "AAAAAAAAAA";
-    private static final String UPDATED_NOME_ALUNO = "BBBBBBBBBB";
-
     private static final Integer DEFAULT_COD_CONSULTA = 1;
     private static final Integer UPDATED_COD_CONSULTA = 2;
+
+    private static final ZonedDateTime DEFAULT_DATA_DA_CONSULTA = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_DATA_DA_CONSULTA = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
+    private static final ZonedDateTime DEFAULT_HORARIO_DA_CONSULTA = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_HORARIO_DA_CONSULTA = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     private static final String ENTITY_API_URL = "/api/consultas";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -59,7 +67,10 @@ class CONSULTAResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static CONSULTA createEntity(EntityManager em) {
-        CONSULTA cONSULTA = new CONSULTA().nomeAluno(DEFAULT_NOME_ALUNO).codConsulta(DEFAULT_COD_CONSULTA);
+        CONSULTA cONSULTA = new CONSULTA()
+            .codConsulta(DEFAULT_COD_CONSULTA)
+            .dataDaConsulta(DEFAULT_DATA_DA_CONSULTA)
+            .horarioDaConsulta(DEFAULT_HORARIO_DA_CONSULTA);
         return cONSULTA;
     }
 
@@ -70,7 +81,10 @@ class CONSULTAResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static CONSULTA createUpdatedEntity(EntityManager em) {
-        CONSULTA cONSULTA = new CONSULTA().nomeAluno(UPDATED_NOME_ALUNO).codConsulta(UPDATED_COD_CONSULTA);
+        CONSULTA cONSULTA = new CONSULTA()
+            .codConsulta(UPDATED_COD_CONSULTA)
+            .dataDaConsulta(UPDATED_DATA_DA_CONSULTA)
+            .horarioDaConsulta(UPDATED_HORARIO_DA_CONSULTA);
         return cONSULTA;
     }
 
@@ -92,8 +106,9 @@ class CONSULTAResourceIT {
         List<CONSULTA> cONSULTAList = cONSULTARepository.findAll();
         assertThat(cONSULTAList).hasSize(databaseSizeBeforeCreate + 1);
         CONSULTA testCONSULTA = cONSULTAList.get(cONSULTAList.size() - 1);
-        assertThat(testCONSULTA.getNomeAluno()).isEqualTo(DEFAULT_NOME_ALUNO);
         assertThat(testCONSULTA.getCodConsulta()).isEqualTo(DEFAULT_COD_CONSULTA);
+        assertThat(testCONSULTA.getDataDaConsulta()).isEqualTo(DEFAULT_DATA_DA_CONSULTA);
+        assertThat(testCONSULTA.getHorarioDaConsulta()).isEqualTo(DEFAULT_HORARIO_DA_CONSULTA);
     }
 
     @Test
@@ -143,8 +158,9 @@ class CONSULTAResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(cONSULTA.getId().intValue())))
-            .andExpect(jsonPath("$.[*].nomeAluno").value(hasItem(DEFAULT_NOME_ALUNO)))
-            .andExpect(jsonPath("$.[*].codConsulta").value(hasItem(DEFAULT_COD_CONSULTA)));
+            .andExpect(jsonPath("$.[*].codConsulta").value(hasItem(DEFAULT_COD_CONSULTA)))
+            .andExpect(jsonPath("$.[*].dataDaConsulta").value(hasItem(sameInstant(DEFAULT_DATA_DA_CONSULTA))))
+            .andExpect(jsonPath("$.[*].horarioDaConsulta").value(hasItem(sameInstant(DEFAULT_HORARIO_DA_CONSULTA))));
     }
 
     @Test
@@ -159,8 +175,9 @@ class CONSULTAResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(cONSULTA.getId().intValue()))
-            .andExpect(jsonPath("$.nomeAluno").value(DEFAULT_NOME_ALUNO))
-            .andExpect(jsonPath("$.codConsulta").value(DEFAULT_COD_CONSULTA));
+            .andExpect(jsonPath("$.codConsulta").value(DEFAULT_COD_CONSULTA))
+            .andExpect(jsonPath("$.dataDaConsulta").value(sameInstant(DEFAULT_DATA_DA_CONSULTA)))
+            .andExpect(jsonPath("$.horarioDaConsulta").value(sameInstant(DEFAULT_HORARIO_DA_CONSULTA)));
     }
 
     @Test
@@ -182,7 +199,10 @@ class CONSULTAResourceIT {
         CONSULTA updatedCONSULTA = cONSULTARepository.findById(cONSULTA.getId()).get();
         // Disconnect from session so that the updates on updatedCONSULTA are not directly saved in db
         em.detach(updatedCONSULTA);
-        updatedCONSULTA.nomeAluno(UPDATED_NOME_ALUNO).codConsulta(UPDATED_COD_CONSULTA);
+        updatedCONSULTA
+            .codConsulta(UPDATED_COD_CONSULTA)
+            .dataDaConsulta(UPDATED_DATA_DA_CONSULTA)
+            .horarioDaConsulta(UPDATED_HORARIO_DA_CONSULTA);
 
         restCONSULTAMockMvc
             .perform(
@@ -196,8 +216,9 @@ class CONSULTAResourceIT {
         List<CONSULTA> cONSULTAList = cONSULTARepository.findAll();
         assertThat(cONSULTAList).hasSize(databaseSizeBeforeUpdate);
         CONSULTA testCONSULTA = cONSULTAList.get(cONSULTAList.size() - 1);
-        assertThat(testCONSULTA.getNomeAluno()).isEqualTo(UPDATED_NOME_ALUNO);
         assertThat(testCONSULTA.getCodConsulta()).isEqualTo(UPDATED_COD_CONSULTA);
+        assertThat(testCONSULTA.getDataDaConsulta()).isEqualTo(UPDATED_DATA_DA_CONSULTA);
+        assertThat(testCONSULTA.getHorarioDaConsulta()).isEqualTo(UPDATED_HORARIO_DA_CONSULTA);
     }
 
     @Test
@@ -268,7 +289,7 @@ class CONSULTAResourceIT {
         CONSULTA partialUpdatedCONSULTA = new CONSULTA();
         partialUpdatedCONSULTA.setId(cONSULTA.getId());
 
-        partialUpdatedCONSULTA.nomeAluno(UPDATED_NOME_ALUNO);
+        partialUpdatedCONSULTA.codConsulta(UPDATED_COD_CONSULTA).horarioDaConsulta(UPDATED_HORARIO_DA_CONSULTA);
 
         restCONSULTAMockMvc
             .perform(
@@ -282,8 +303,9 @@ class CONSULTAResourceIT {
         List<CONSULTA> cONSULTAList = cONSULTARepository.findAll();
         assertThat(cONSULTAList).hasSize(databaseSizeBeforeUpdate);
         CONSULTA testCONSULTA = cONSULTAList.get(cONSULTAList.size() - 1);
-        assertThat(testCONSULTA.getNomeAluno()).isEqualTo(UPDATED_NOME_ALUNO);
-        assertThat(testCONSULTA.getCodConsulta()).isEqualTo(DEFAULT_COD_CONSULTA);
+        assertThat(testCONSULTA.getCodConsulta()).isEqualTo(UPDATED_COD_CONSULTA);
+        assertThat(testCONSULTA.getDataDaConsulta()).isEqualTo(DEFAULT_DATA_DA_CONSULTA);
+        assertThat(testCONSULTA.getHorarioDaConsulta()).isEqualTo(UPDATED_HORARIO_DA_CONSULTA);
     }
 
     @Test
@@ -298,7 +320,10 @@ class CONSULTAResourceIT {
         CONSULTA partialUpdatedCONSULTA = new CONSULTA();
         partialUpdatedCONSULTA.setId(cONSULTA.getId());
 
-        partialUpdatedCONSULTA.nomeAluno(UPDATED_NOME_ALUNO).codConsulta(UPDATED_COD_CONSULTA);
+        partialUpdatedCONSULTA
+            .codConsulta(UPDATED_COD_CONSULTA)
+            .dataDaConsulta(UPDATED_DATA_DA_CONSULTA)
+            .horarioDaConsulta(UPDATED_HORARIO_DA_CONSULTA);
 
         restCONSULTAMockMvc
             .perform(
@@ -312,8 +337,9 @@ class CONSULTAResourceIT {
         List<CONSULTA> cONSULTAList = cONSULTARepository.findAll();
         assertThat(cONSULTAList).hasSize(databaseSizeBeforeUpdate);
         CONSULTA testCONSULTA = cONSULTAList.get(cONSULTAList.size() - 1);
-        assertThat(testCONSULTA.getNomeAluno()).isEqualTo(UPDATED_NOME_ALUNO);
         assertThat(testCONSULTA.getCodConsulta()).isEqualTo(UPDATED_COD_CONSULTA);
+        assertThat(testCONSULTA.getDataDaConsulta()).isEqualTo(UPDATED_DATA_DA_CONSULTA);
+        assertThat(testCONSULTA.getHorarioDaConsulta()).isEqualTo(UPDATED_HORARIO_DA_CONSULTA);
     }
 
     @Test

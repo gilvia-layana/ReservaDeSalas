@@ -33,8 +33,9 @@
       <thead>
         <tr>
           <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
-          <th scope="col"><span jhiTranslate="reservaApp.cONSULTA.nomeAluno">Nome Aluno</span></th>
           <th scope="col"><span jhiTranslate="reservaApp.cONSULTA.codConsulta">Cod Consulta</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.cONSULTA.dataDaConsulta">Data Da Consulta</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.cONSULTA.horarioDaConsulta">Horario Da Consulta</span></th>
           <th scope="col"><span jhiTranslate="reservaApp.cONSULTA.aLUNO">A LUNO</span></th>
           <th scope="col"></th>
         </tr>
@@ -44,8 +45,9 @@
           <td>
             <a [routerLink]="['/consulta', cONSULTA.id, 'view']">{{ cONSULTA.id }}</a>
           </td>
-          <td>{{ cONSULTA.nomeAluno }}</td>
           <td>{{ cONSULTA.codConsulta }}</td>
+          <td>{{ cONSULTA.dataDaConsulta | formatMediumDatetime }}</td>
+          <td>{{ cONSULTA.horarioDaConsulta | formatMediumDatetime }}</td>
           <td>
             <div *ngIf="cONSULTA.aLUNO">
               <a [routerLink]="['/aluno', cONSULTA.aLUNO?.id, 'view']">{{ cONSULTA.aLUNO?.matriculaAluno }}</a>
