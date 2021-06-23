@@ -22,7 +22,9 @@
       "nome": "Nome",
       "disciplina": "Disciplina",
       "faculdade": "Faculdade",
-      "dadosPessoais": "Dados Pessoais"
+      "dadosPessoais": "Dados Pessoais",
+      "pROFESSOR": "P ROFESSOR",
+      "pROFESSOR": "P ROFESSOR"
     }
   }
 }

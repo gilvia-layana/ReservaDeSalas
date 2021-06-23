@@ -25,10 +25,12 @@
       "dataSolicitacao": "Data Solicitacao",
       "horarioDaSolicitacao": "Horario Da Solicitacao",
       "statusReservaSala": "Status Reserva Sala",
+      "codUsuario": "Cod Usuario",
+      "disciplinaMinistrada": "Disciplina Ministrada",
       "sALA": "S ALA",
       "cONSULTA": "C ONSULTA",
-      "pROFESSOR": "P ROFESSOR",
-      "pROFESSOR": "P ROFESSOR"
+      "rESERVA": "R ESERVA",
+      "rESERVA": "R ESERVA"
     }
   }
 }

@@ -147,6 +147,12 @@ public class RESERVAResource {
                     if (rESERVA.getStatusReservaSala() != null) {
                         existingRESERVA.setStatusReservaSala(rESERVA.getStatusReservaSala());
                     }
+                    if (rESERVA.getCodUsuario() != null) {
+                        existingRESERVA.setCodUsuario(rESERVA.getCodUsuario());
+                    }
+                    if (rESERVA.getDisciplinaMinistrada() != null) {
+                        existingRESERVA.setDisciplinaMinistrada(rESERVA.getDisciplinaMinistrada());
+                    }
 
                     return existingRESERVA;
                 }

@@ -34,6 +34,8 @@ describe('Service Tests', () => {
         dataSolicitacao: currentDate,
         horarioDaSolicitacao: currentDate,
         statusReservaSala: StatusReserva.Confirmada,
+        codUsuario: 0,
+        disciplinaMinistrada: 'AAAAAAA',
       };
     });
 
@@ -99,6 +101,8 @@ describe('Service Tests', () => {
             dataSolicitacao: currentDate.format(DATE_TIME_FORMAT),
             horarioDaSolicitacao: currentDate.format(DATE_TIME_FORMAT),
             statusReservaSala: 'BBBBBB',
+            codUsuario: 1,
+            disciplinaMinistrada: 'BBBBBB',
           },
           elemDefault
         );
@@ -163,6 +167,8 @@ describe('Service Tests', () => {
             dataSolicitacao: currentDate.format(DATE_TIME_FORMAT),
             horarioDaSolicitacao: currentDate.format(DATE_TIME_FORMAT),
             statusReservaSala: 'BBBBBB',
+            codUsuario: 1,
+            disciplinaMinistrada: 'BBBBBB',
           },
           elemDefault
         );
@@ -223,7 +229,7 @@ describe('Service Tests', () => {
         });
 
         it('should add only unique RESERVA to an array', () => {
-          const rESERVAArray: IRESERVA[] = [{ id: 123 }, { id: 456 }, { id: 1421 }];
+          const rESERVAArray: IRESERVA[] = [{ id: 123 }, { id: 456 }, { id: 61480 }];
           const rESERVACollection: IRESERVA[] = [{ id: 123 }];
           expectedResult = service.addRESERVAToCollectionIfMissing(rESERVACollection, ...rESERVAArray);
           expect(expectedResult).toHaveLength(3);

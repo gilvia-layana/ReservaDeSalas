@@ -88,14 +88,14 @@ describe('Component Tests', () => {
 
       it('Should call PROFESSOR query and add missing value', () => {
         const rESERVA: IRESERVA = { id: 456 };
-        const pROFESSOR: IPROFESSOR = { id: 73113 };
-        rESERVA.pROFESSOR = pROFESSOR;
-        const pROFESSOR: IPROFESSOR = { id: 64184 };
-        rESERVA.pROFESSOR = pROFESSOR;
+        const rESERVA: IPROFESSOR = { id: 73113 };
+        rESERVA.rESERVA = rESERVA;
+        const rESERVA: IPROFESSOR = { id: 64184 };
+        rESERVA.rESERVA = rESERVA;
 
         const pROFESSORCollection: IPROFESSOR[] = [{ id: 61573 }];
         spyOn(pROFESSORService, 'query').and.returnValue(of(new HttpResponse({ body: pROFESSORCollection })));
-        const additionalPROFESSORS = [pROFESSOR, pROFESSOR];
+        const additionalPROFESSORS = [rESERVA, rESERVA];
         const expectedCollection: IPROFESSOR[] = [...additionalPROFESSORS, ...pROFESSORCollection];
         spyOn(pROFESSORService, 'addPROFESSORToCollectionIfMissing').and.returnValue(expectedCollection);
 
@@ -113,10 +113,10 @@ describe('Component Tests', () => {
         rESERVA.sALA = sALA;
         const cONSULTA: ICONSULTA = { id: 55448 };
         rESERVA.cONSULTA = cONSULTA;
-        const pROFESSOR: IPROFESSOR = { id: 94859 };
-        rESERVA.pROFESSOR = pROFESSOR;
-        const pROFESSOR: IPROFESSOR = { id: 44511 };
-        rESERVA.pROFESSOR = pROFESSOR;
+        const rESERVA: IPROFESSOR = { id: 94859 };
+        rESERVA.rESERVA = rESERVA;
+        const rESERVA: IPROFESSOR = { id: 44511 };
+        rESERVA.rESERVA = rESERVA;
 
         activatedRoute.data = of({ rESERVA });
         comp.ngOnInit();
@@ -124,8 +124,8 @@ describe('Component Tests', () => {
         expect(comp.editForm.value).toEqual(expect.objectContaining(rESERVA));
         expect(comp.sALASSharedCollection).toContain(sALA);
         expect(comp.cONSULTASSharedCollection).toContain(cONSULTA);
-        expect(comp.pROFESSORSSharedCollection).toContain(pROFESSOR);
-        expect(comp.pROFESSORSSharedCollection).toContain(pROFESSOR);
+        expect(comp.pROFESSORSSharedCollection).toContain(rESERVA);
+        expect(comp.pROFESSORSSharedCollection).toContain(rESERVA);
       });
     });
 

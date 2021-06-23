@@ -50,7 +50,9 @@ entity RESERVA {
     HorarioFinal ZonedDateTime,
     DataSolicitacao ZonedDateTime,
     HorarioDaSolicitacao ZonedDateTime,
-    StatusReservaSala StatusReserva
+    StatusReservaSala StatusReserva,
+    CodUsuario Integer,
+    DisciplinaMinistrada String
 }
 
 entity CONSULTA {
@@ -62,8 +64,8 @@ relationship ManyToOne {
 	RESERVA {SALA(CodSala)} to SALA
     CONSULTA {ALUNO(MatriculaAluno)} to ALUNO
     RESERVA {CONSULTA(CodConsulta)} to CONSULTA
-    RESERVA {PROFESSOR(MatriculaProf)} to PROFESSOR
-    RESERVA {PROFESSOR(Disciplina)} to PROFESSOR
+    RESERVA{RESERVA(CodUsuario)}  to PROFESSOR {PROFESSOR(MatriculaProf)}
+    RESERVA{RESERVA(DisciplinaMinistrada)}  to PROFESSOR {PROFESSOR(Disciplina)}
 }
 
 relationship OneToMany {

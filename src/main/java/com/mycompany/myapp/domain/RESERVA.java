@@ -48,6 +48,12 @@ public class RESERVA implements Serializable {
     @Column(name = "status_reserva_sala")
     private StatusReserva statusReservaSala;
 
+    @Column(name = "cod_usuario")
+    private Integer codUsuario;
+
+    @Column(name = "disciplina_ministrada")
+    private String disciplinaMinistrada;
+
     @ManyToOne
     private SALA sALA;
 
@@ -56,12 +62,12 @@ public class RESERVA implements Serializable {
     private CONSULTA cONSULTA;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "dadosPessoais" }, allowSetters = true)
-    private PROFESSOR pROFESSOR;
+    @JsonIgnoreProperties(value = { "dadosPessoais", "pROFESSORS", "pROFESSORS" }, allowSetters = true)
+    private PROFESSOR rESERVA;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "dadosPessoais" }, allowSetters = true)
-    private PROFESSOR pROFESSOR;
+    @JsonIgnoreProperties(value = { "dadosPessoais", "pROFESSORS", "pROFESSORS" }, allowSetters = true)
+    private PROFESSOR rESERVA;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -168,6 +174,32 @@ public class RESERVA implements Serializable {
         this.statusReservaSala = statusReservaSala;
     }
 
+    public Integer getCodUsuario() {
+        return this.codUsuario;
+    }
+
+    public RESERVA codUsuario(Integer codUsuario) {
+        this.codUsuario = codUsuario;
+        return this;
+    }
+
+    public void setCodUsuario(Integer codUsuario) {
+        this.codUsuario = codUsuario;
+    }
+
+    public String getDisciplinaMinistrada() {
+        return this.disciplinaMinistrada;
+    }
+
+    public RESERVA disciplinaMinistrada(String disciplinaMinistrada) {
+        this.disciplinaMinistrada = disciplinaMinistrada;
+        return this;
+    }
+
+    public void setDisciplinaMinistrada(String disciplinaMinistrada) {
+        this.disciplinaMinistrada = disciplinaMinistrada;
+    }
+
     public SALA getSALA() {
         return this.sALA;
     }
@@ -194,30 +226,30 @@ public class RESERVA implements Serializable {
         this.cONSULTA = cONSULTA;
     }
 
-    public PROFESSOR getPROFESSOR() {
-        return this.pROFESSOR;
+    public PROFESSOR getRESERVA() {
+        return this.rESERVA;
     }
 
-    public RESERVA pROFESSOR(PROFESSOR pROFESSOR) {
-        this.setPROFESSOR(pROFESSOR);
+    public RESERVA rESERVA(PROFESSOR pROFESSOR) {
+        this.setRESERVA(pROFESSOR);
         return this;
     }
 
-    public void setPROFESSOR(PROFESSOR pROFESSOR) {
-        this.pROFESSOR = pROFESSOR;
+    public void setRESERVA(PROFESSOR pROFESSOR) {
+        this.rESERVA = pROFESSOR;
     }
 
-    public PROFESSOR getPROFESSOR() {
-        return this.pROFESSOR;
+    public PROFESSOR getRESERVA() {
+        return this.rESERVA;
     }
 
-    public RESERVA pROFESSOR(PROFESSOR pROFESSOR) {
-        this.setPROFESSOR(pROFESSOR);
+    public RESERVA rESERVA(PROFESSOR pROFESSOR) {
+        this.setRESERVA(pROFESSOR);
         return this;
     }
 
-    public void setPROFESSOR(PROFESSOR pROFESSOR) {
-        this.pROFESSOR = pROFESSOR;
+    public void setRESERVA(PROFESSOR pROFESSOR) {
+        this.rESERVA = pROFESSOR;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -251,6 +283,8 @@ public class RESERVA implements Serializable {
             ", dataSolicitacao='" + getDataSolicitacao() + "'" +
             ", horarioDaSolicitacao='" + getHorarioDaSolicitacao() + "'" +
             ", statusReservaSala='" + getStatusReservaSala() + "'" +
+            ", codUsuario=" + getCodUsuario() +
+            ", disciplinaMinistrada='" + getDisciplinaMinistrada() + "'" +
             "}";
     }
 }
