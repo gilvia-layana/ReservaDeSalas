@@ -30,14 +30,6 @@
       "fieldName": "statusReservaSala",
       "fieldType": "StatusReserva",
       "fieldValues": "Confirmada,Cancelada,EmAnalise"
-    },
-    {
-      "fieldName": "codUsuario",
-      "fieldType": "Integer"
-    },
-    {
-      "fieldName": "disciplinaMinistrada",
-      "fieldType": "String"
     }
   ],
   "relationships": [
@@ -58,16 +50,9 @@
     {
       "relationshipType": "many-to-one",
       "otherEntityName": "pROFESSOR",
-      "otherEntityRelationshipName": "pROFESSOR",
-      "relationshipName": "rESERVA",
-      "otherEntityField": "codUsuario"
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "pROFESSOR",
-      "otherEntityRelationshipName": "pROFESSOR",
-      "relationshipName": "rESERVA",
-      "otherEntityField": "disciplinaMinistrada"
+      "otherEntityRelationshipName": "rESERVA",
+      "relationshipName": "pROFESSOR",
+      "otherEntityField": "matriculaProf"
     }
   ],
   "entityTableName": "reserva",

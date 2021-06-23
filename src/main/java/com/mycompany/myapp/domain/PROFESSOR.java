@@ -42,16 +42,6 @@ public class PROFESSOR implements Serializable {
     @JsonIgnoreProperties(value = { "aLUNO", "pROFESSOR" }, allowSetters = true)
     private Set<DadosPessoais> dadosPessoais = new HashSet<>();
 
-    @OneToMany(mappedBy = "rESERVA")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "sALA", "cONSULTA", "rESERVA", "rESERVA" }, allowSetters = true)
-    private Set<RESERVA> pROFESSORS = new HashSet<>();
-
-    @OneToMany(mappedBy = "rESERVA")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "sALA", "cONSULTA", "rESERVA", "rESERVA" }, allowSetters = true)
-    private Set<RESERVA> pROFESSORS = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -147,68 +137,6 @@ public class PROFESSOR implements Serializable {
             dadosPessoais.forEach(i -> i.setPROFESSOR(this));
         }
         this.dadosPessoais = dadosPessoais;
-    }
-
-    public Set<RESERVA> getPROFESSORS() {
-        return this.pROFESSORS;
-    }
-
-    public PROFESSOR pROFESSORS(Set<RESERVA> rESERVAS) {
-        this.setPROFESSORS(rESERVAS);
-        return this;
-    }
-
-    public PROFESSOR addPROFESSOR(RESERVA rESERVA) {
-        this.pROFESSORS.add(rESERVA);
-        rESERVA.setRESERVA(this);
-        return this;
-    }
-
-    public PROFESSOR removePROFESSOR(RESERVA rESERVA) {
-        this.pROFESSORS.remove(rESERVA);
-        rESERVA.setRESERVA(null);
-        return this;
-    }
-
-    public void setPROFESSORS(Set<RESERVA> rESERVAS) {
-        if (this.pROFESSORS != null) {
-            this.pROFESSORS.forEach(i -> i.setRESERVA(null));
-        }
-        if (rESERVAS != null) {
-            rESERVAS.forEach(i -> i.setRESERVA(this));
-        }
-        this.pROFESSORS = rESERVAS;
-    }
-
-    public Set<RESERVA> getPROFESSORS() {
-        return this.pROFESSORS;
-    }
-
-    public PROFESSOR pROFESSORS(Set<RESERVA> rESERVAS) {
-        this.setPROFESSORS(rESERVAS);
-        return this;
-    }
-
-    public PROFESSOR addPROFESSOR(RESERVA rESERVA) {
-        this.pROFESSORS.add(rESERVA);
-        rESERVA.setRESERVA(this);
-        return this;
-    }
-
-    public PROFESSOR removePROFESSOR(RESERVA rESERVA) {
-        this.pROFESSORS.remove(rESERVA);
-        rESERVA.setRESERVA(null);
-        return this;
-    }
-
-    public void setPROFESSORS(Set<RESERVA> rESERVAS) {
-        if (this.pROFESSORS != null) {
-            this.pROFESSORS.forEach(i -> i.setRESERVA(null));
-        }
-        if (rESERVAS != null) {
-            rESERVAS.forEach(i -> i.setRESERVA(this));
-        }
-        this.pROFESSORS = rESERVAS;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -145,32 +145,6 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.codUsuario" for="field_codUsuario">Cod Usuario</label>
-          <input
-            type="number"
-            class="form-control"
-            name="codUsuario"
-            id="field_codUsuario"
-            data-cy="codUsuario"
-            formControlName="codUsuario"
-          />
-        </div>
-
-        <div class="form-group">
-          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.disciplinaMinistrada" for="field_disciplinaMinistrada"
-            >Disciplina Ministrada</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            name="disciplinaMinistrada"
-            id="field_disciplinaMinistrada"
-            data-cy="disciplinaMinistrada"
-            formControlName="disciplinaMinistrada"
-          />
-        </div>
-
-        <div class="form-group">
           <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.sALA" for="field_sALA">S ALA</label>
           <select class="form-control" id="field_sALA" data-cy="sALA" name="sALA" formControlName="sALA">
             <option [ngValue]="null"></option>
@@ -197,27 +171,14 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.rESERVA" for="field_rESERVA">R ESERVA</label>
-          <select class="form-control" id="field_rESERVA" data-cy="rESERVA" name="rESERVA" formControlName="rESERVA">
+          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.pROFESSOR" for="field_pROFESSOR">P ROFESSOR</label>
+          <select class="form-control" id="field_pROFESSOR" data-cy="pROFESSOR" name="pROFESSOR" formControlName="pROFESSOR">
             <option [ngValue]="null"></option>
             <option
-              [ngValue]="pROFESSOROption.id === editForm.get('rESERVA')!.value?.id ? editForm.get('rESERVA')!.value : pROFESSOROption"
+              [ngValue]="pROFESSOROption.id === editForm.get('pROFESSOR')!.value?.id ? editForm.get('pROFESSOR')!.value : pROFESSOROption"
               *ngFor="let pROFESSOROption of pROFESSORSSharedCollection; trackBy: trackPROFESSORById"
             >
-              {{ pROFESSOROption.codUsuario }}
-            </option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-control-label" jhiTranslate="reservaApp.rESERVA.rESERVA" for="field_rESERVA">R ESERVA</label>
-          <select class="form-control" id="field_rESERVA" data-cy="rESERVA" name="rESERVA" formControlName="rESERVA">
-            <option [ngValue]="null"></option>
-            <option
-              [ngValue]="pROFESSOROption.id === editForm.get('rESERVA')!.value?.id ? editForm.get('rESERVA')!.value : pROFESSOROption"
-              *ngFor="let pROFESSOROption of pROFESSORSSharedCollection; trackBy: trackPROFESSORById"
-            >
-              {{ pROFESSOROption.disciplinaMinistrada }}
+              {{ pROFESSOROption.matriculaProf }}
             </option>
           </select>
         </div>

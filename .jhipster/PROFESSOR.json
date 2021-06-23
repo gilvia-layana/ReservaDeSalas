@@ -25,20 +25,6 @@
       "otherEntityName": "dadosPessoais",
       "otherEntityRelationshipName": "pROFESSOR",
       "relationshipName": "dadosPessoais"
-    },
-    {
-      "relationshipType": "one-to-many",
-      "otherEntityName": "rESERVA",
-      "otherEntityRelationshipName": "rESERVA",
-      "relationshipName": "pROFESSOR",
-      "otherEntityField": "matriculaProf"
-    },
-    {
-      "relationshipType": "one-to-many",
-      "otherEntityName": "rESERVA",
-      "otherEntityRelationshipName": "rESERVA",
-      "relationshipName": "pROFESSOR",
-      "otherEntityField": "disciplina"
     }
   ],
   "entityTableName": "professor",

@@ -20,15 +20,9 @@
                                  referencedColumnNames="id"
                                  referencedTableName="consulta"/>
 
-        <addForeignKeyConstraint baseColumnNames="reserva_id"
+        <addForeignKeyConstraint baseColumnNames="professor_id"
                                  baseTableName="reserva"
-                                 constraintName="fk_reserva__reserva_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="professor"/>
-
-        <addForeignKeyConstraint baseColumnNames="reserva_id"
-                                 baseTableName="reserva"
-                                 constraintName="fk_reserva__reserva_id"
+                                 constraintName="fk_reserva__professor_id"
                                  referencedColumnNames="id"
                                  referencedTableName="professor"/>
     </changeSet>
