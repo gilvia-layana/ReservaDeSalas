@@ -2,6 +2,7 @@ package com.mycompany.myapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -28,7 +29,7 @@ public class CONSULTA implements Serializable {
     private Integer codConsulta;
 
     @Column(name = "data_da_consulta")
-    private ZonedDateTime dataDaConsulta;
+    private LocalDate dataDaConsulta;
 
     @Column(name = "horario_da_consulta")
     private ZonedDateTime horarioDaConsulta;
@@ -64,16 +65,16 @@ public class CONSULTA implements Serializable {
         this.codConsulta = codConsulta;
     }
 
-    public ZonedDateTime getDataDaConsulta() {
+    public LocalDate getDataDaConsulta() {
         return this.dataDaConsulta;
     }
 
-    public CONSULTA dataDaConsulta(ZonedDateTime dataDaConsulta) {
+    public CONSULTA dataDaConsulta(LocalDate dataDaConsulta) {
         this.dataDaConsulta = dataDaConsulta;
         return this;
     }
 
-    public void setDataDaConsulta(ZonedDateTime dataDaConsulta) {
+    public void setDataDaConsulta(LocalDate dataDaConsulta) {
         this.dataDaConsulta = dataDaConsulta;
     }
 

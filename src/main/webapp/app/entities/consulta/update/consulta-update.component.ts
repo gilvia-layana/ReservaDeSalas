@@ -41,7 +41,6 @@ export class CONSULTAUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ cONSULTA }) => {
       if (cONSULTA.id === undefined) {
         const today = dayjs().startOf('day');
-        cONSULTA.dataDaConsulta = today;
         cONSULTA.horarioDaConsulta = today;
       }
 
@@ -92,7 +91,7 @@ export class CONSULTAUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: cONSULTA.id,
       codConsulta: cONSULTA.codConsulta,
-      dataDaConsulta: cONSULTA.dataDaConsulta ? cONSULTA.dataDaConsulta.format(DATE_TIME_FORMAT) : null,
+      dataDaConsulta: cONSULTA.dataDaConsulta,
       horarioDaConsulta: cONSULTA.horarioDaConsulta ? cONSULTA.horarioDaConsulta.format(DATE_TIME_FORMAT) : null,
       aLUNO: cONSULTA.aLUNO,
     });
@@ -113,9 +112,7 @@ export class CONSULTAUpdateComponent implements OnInit {
       ...new CONSULTA(),
       id: this.editForm.get(['id'])!.value,
       codConsulta: this.editForm.get(['codConsulta'])!.value,
-      dataDaConsulta: this.editForm.get(['dataDaConsulta'])!.value
-        ? dayjs(this.editForm.get(['dataDaConsulta'])!.value, DATE_TIME_FORMAT)
-        : undefined,
+      dataDaConsulta: this.editForm.get(['dataDaConsulta'])!.value,
       horarioDaConsulta: this.editForm.get(['horarioDaConsulta'])!.value
         ? dayjs(this.editForm.get(['horarioDaConsulta'])!.value, DATE_TIME_FORMAT)
         : undefined,

@@ -39,7 +39,7 @@ public class RESERVA implements Serializable {
     private ZonedDateTime horarioFinal;
 
     @Column(name = "data_solicitacao")
-    private ZonedDateTime dataSolicitacao;
+    private LocalDate dataSolicitacao;
 
     @Column(name = "horario_da_solicitacao")
     private ZonedDateTime horarioDaSolicitacao;
@@ -125,16 +125,16 @@ public class RESERVA implements Serializable {
         this.horarioFinal = horarioFinal;
     }
 
-    public ZonedDateTime getDataSolicitacao() {
+    public LocalDate getDataSolicitacao() {
         return this.dataSolicitacao;
     }
 
-    public RESERVA dataSolicitacao(ZonedDateTime dataSolicitacao) {
+    public RESERVA dataSolicitacao(LocalDate dataSolicitacao) {
         this.dataSolicitacao = dataSolicitacao;
         return this;
     }
 
-    public void setDataSolicitacao(ZonedDateTime dataSolicitacao) {
+    public void setDataSolicitacao(LocalDate dataSolicitacao) {
         this.dataSolicitacao = dataSolicitacao;
     }
 

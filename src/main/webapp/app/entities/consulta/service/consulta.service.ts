@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import * as dayjs from 'dayjs';
 
 import { isPresent } from 'app/core/util/operators';
+import { DATE_FORMAT } from 'app/config/input.constants';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { ICONSULTA, getCONSULTAIdentifier } from '../consulta.model';
@@ -75,7 +76,7 @@ export class CONSULTAService {
 
   protected convertDateFromClient(cONSULTA: ICONSULTA): ICONSULTA {
     return Object.assign({}, cONSULTA, {
-      dataDaConsulta: cONSULTA.dataDaConsulta?.isValid() ? cONSULTA.dataDaConsulta.toJSON() : undefined,
+      dataDaConsulta: cONSULTA.dataDaConsulta?.isValid() ? cONSULTA.dataDaConsulta.format(DATE_FORMAT) : undefined,
       horarioDaConsulta: cONSULTA.horarioDaConsulta?.isValid() ? cONSULTA.horarioDaConsulta.toJSON() : undefined,
     });
   }

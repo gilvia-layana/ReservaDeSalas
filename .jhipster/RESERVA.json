@@ -20,7 +20,7 @@
     },
     {
       "fieldName": "dataSolicitacao",
-      "fieldType": "ZonedDateTime"
+      "fieldType": "LocalDate"
     },
     {
       "fieldName": "horarioDaSolicitacao",

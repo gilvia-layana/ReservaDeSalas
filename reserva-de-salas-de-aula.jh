@@ -48,14 +48,14 @@ entity RESERVA {
 	DataReserva LocalDate,
     HorarioInicio ZonedDateTime,
     HorarioFinal ZonedDateTime,
-    DataSolicitacao ZonedDateTime,
+    DataSolicitacao LocalDate,
     HorarioDaSolicitacao ZonedDateTime,
     StatusReservaSala StatusReserva
 }
 
 entity CONSULTA {
 	CodConsulta Integer required,
-    DataDaConsulta ZonedDateTime,
+    DataDaConsulta LocalDate,
     HorarioDaConsulta ZonedDateTime
 }
 
