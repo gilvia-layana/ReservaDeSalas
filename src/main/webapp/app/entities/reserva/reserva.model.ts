@@ -13,10 +13,12 @@ export interface IRESERVA {
   dataSolicitacao?: dayjs.Dayjs | null;
   horarioDaSolicitacao?: dayjs.Dayjs | null;
   statusReservaSala?: StatusReserva | null;
+  codUsuario?: number | null;
+  disciplinaMinistrada?: string | null;
   sALA?: ISALA | null;
   cONSULTA?: ICONSULTA | null;
-  pROFESSOR?: IPROFESSOR | null;
-  pROFESSOR?: IPROFESSOR | null;
+  rESERVA?: IPROFESSOR | null;
+  rESERVA?: IPROFESSOR | null;
 }
 
 export class RESERVA implements IRESERVA {
@@ -29,10 +31,12 @@ export class RESERVA implements IRESERVA {
     public dataSolicitacao?: dayjs.Dayjs | null,
     public horarioDaSolicitacao?: dayjs.Dayjs | null,
     public statusReservaSala?: StatusReserva | null,
+    public codUsuario?: number | null,
+    public disciplinaMinistrada?: string | null,
     public sALA?: ISALA | null,
     public cONSULTA?: ICONSULTA | null,
-    public pROFESSOR?: IPROFESSOR | null,
-    public pROFESSOR?: IPROFESSOR | null
+    public rESERVA?: IPROFESSOR | null,
+    public rESERVA?: IPROFESSOR | null
   ) {}
 }
 

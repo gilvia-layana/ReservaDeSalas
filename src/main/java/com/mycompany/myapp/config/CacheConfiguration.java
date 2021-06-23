@@ -56,6 +56,7 @@ public class CacheConfiguration {
             createCache(cm, com.mycompany.myapp.domain.ALUNO.class.getName() + ".dadosPessoais");
             createCache(cm, com.mycompany.myapp.domain.RESERVA.class.getName());
             createCache(cm, com.mycompany.myapp.domain.CONSULTA.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PROFESSOR.class.getName() + ".pROFESSORS");
             // jhipster-needle-ehcache-add-entry
         };
     }

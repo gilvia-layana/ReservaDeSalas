@@ -35,7 +35,7 @@ public class DadosPessoais implements Serializable {
     private ALUNO aLUNO;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "dadosPessoais" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "dadosPessoais", "pROFESSORS", "pROFESSORS" }, allowSetters = true)
     private PROFESSOR pROFESSOR;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
