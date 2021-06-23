@@ -18,8 +18,9 @@
         "title": "CONSULTA"
       },
       "id": "ID",
-      "nomeAluno": "Nome Aluno",
       "codConsulta": "Cod Consulta",
+      "dataDaConsulta": "Data Da Consulta",
+      "horarioDaConsulta": "Horario Da Consulta",
       "aLUNO": "A LUNO"
     }
   }

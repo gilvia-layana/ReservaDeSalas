@@ -2,6 +2,7 @@ package com.mycompany.myapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
@@ -22,12 +23,15 @@ public class CONSULTA implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "nome_aluno")
-    private String nomeAluno;
-
     @NotNull
     @Column(name = "cod_consulta", nullable = false)
     private Integer codConsulta;
+
+    @Column(name = "data_da_consulta")
+    private ZonedDateTime dataDaConsulta;
+
+    @Column(name = "horario_da_consulta")
+    private ZonedDateTime horarioDaConsulta;
 
     @ManyToOne
     @JsonIgnoreProperties(value = { "dadosPessoais" }, allowSetters = true)
@@ -47,19 +51,6 @@ public class CONSULTA implements Serializable {
         return this;
     }
 
-    public String getNomeAluno() {
-        return this.nomeAluno;
-    }
-
-    public CONSULTA nomeAluno(String nomeAluno) {
-        this.nomeAluno = nomeAluno;
-        return this;
-    }
-
-    public void setNomeAluno(String nomeAluno) {
-        this.nomeAluno = nomeAluno;
-    }
-
     public Integer getCodConsulta() {
         return this.codConsulta;
     }
@@ -71,6 +62,32 @@ public class CONSULTA implements Serializable {
 
     public void setCodConsulta(Integer codConsulta) {
         this.codConsulta = codConsulta;
+    }
+
+    public ZonedDateTime getDataDaConsulta() {
+        return this.dataDaConsulta;
+    }
+
+    public CONSULTA dataDaConsulta(ZonedDateTime dataDaConsulta) {
+        this.dataDaConsulta = dataDaConsulta;
+        return this;
+    }
+
+    public void setDataDaConsulta(ZonedDateTime dataDaConsulta) {
+        this.dataDaConsulta = dataDaConsulta;
+    }
+
+    public ZonedDateTime getHorarioDaConsulta() {
+        return this.horarioDaConsulta;
+    }
+
+    public CONSULTA horarioDaConsulta(ZonedDateTime horarioDaConsulta) {
+        this.horarioDaConsulta = horarioDaConsulta;
+        return this;
+    }
+
+    public void setHorarioDaConsulta(ZonedDateTime horarioDaConsulta) {
+        this.horarioDaConsulta = horarioDaConsulta;
     }
 
     public ALUNO getALUNO() {
@@ -110,8 +127,9 @@ public class CONSULTA implements Serializable {
     public String toString() {
         return "CONSULTA{" +
             "id=" + getId() +
-            ", nomeAluno='" + getNomeAluno() + "'" +
             ", codConsulta=" + getCodConsulta() +
+            ", dataDaConsulta='" + getDataDaConsulta() + "'" +
+            ", horarioDaConsulta='" + getHorarioDaConsulta() + "'" +
             "}";
     }
 }

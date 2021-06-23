@@ -54,8 +54,9 @@ entity RESERVA {
 }
 
 entity CONSULTA {
-	NomeAluno String,
-    CodConsulta Integer required,
+	CodConsulta Integer required,
+    DataDaConsulta ZonedDateTime,
+    HorarioDaConsulta ZonedDateTime
 }
 
 relationship ManyToOne {

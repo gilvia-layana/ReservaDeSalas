@@ -126,11 +126,14 @@ public class CONSULTAResource {
             .findById(cONSULTA.getId())
             .map(
                 existingCONSULTA -> {
-                    if (cONSULTA.getNomeAluno() != null) {
-                        existingCONSULTA.setNomeAluno(cONSULTA.getNomeAluno());
-                    }
                     if (cONSULTA.getCodConsulta() != null) {
                         existingCONSULTA.setCodConsulta(cONSULTA.getCodConsulta());
+                    }
+                    if (cONSULTA.getDataDaConsulta() != null) {
+                        existingCONSULTA.setDataDaConsulta(cONSULTA.getDataDaConsulta());
+                    }
+                    if (cONSULTA.getHorarioDaConsulta() != null) {
+                        existingCONSULTA.setHorarioDaConsulta(cONSULTA.getHorarioDaConsulta());
                     }
 
                     return existingCONSULTA;

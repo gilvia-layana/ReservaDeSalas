@@ -69,10 +69,10 @@ describe('Component Tests', () => {
 
       it('Should call CONSULTA query and add missing value', () => {
         const rESERVA: IRESERVA = { id: 456 };
-        const cONSULTA: ICONSULTA = { id: 18665 };
+        const cONSULTA: ICONSULTA = { id: 78368 };
         rESERVA.cONSULTA = cONSULTA;
 
-        const cONSULTACollection: ICONSULTA[] = [{ id: 96643 }];
+        const cONSULTACollection: ICONSULTA[] = [{ id: 42513 }];
         spyOn(cONSULTAService, 'query').and.returnValue(of(new HttpResponse({ body: cONSULTACollection })));
         const additionalCONSULTAS = [cONSULTA];
         const expectedCollection: ICONSULTA[] = [...additionalCONSULTAS, ...cONSULTACollection];
@@ -109,7 +109,7 @@ describe('Component Tests', () => {
         const rESERVA: IRESERVA = { id: 456 };
         const sALA: ISALA = { id: 38719 };
         rESERVA.sALA = sALA;
-        const cONSULTA: ICONSULTA = { id: 55448 };
+        const cONSULTA: ICONSULTA = { id: 75524 };
         rESERVA.cONSULTA = cONSULTA;
         const pROFESSOR: IPROFESSOR = { id: 61573 };
         rESERVA.pROFESSOR = pROFESSOR;

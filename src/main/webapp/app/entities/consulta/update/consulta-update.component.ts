@@ -5,6 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
 
+import * as dayjs from 'dayjs';
+import { DATE_TIME_FORMAT } from 'app/config/input.constants';
+
 import { ICONSULTA, CONSULTA } from '../consulta.model';
 import { CONSULTAService } from '../service/consulta.service';
 import { IALUNO } from 'app/entities/aluno/aluno.model';
@@ -21,8 +24,9 @@ export class CONSULTAUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    nomeAluno: [],
     codConsulta: [null, [Validators.required]],
+    dataDaConsulta: [],
+    horarioDaConsulta: [],
     aLUNO: [],
   });
 
@@ -35,6 +39,12 @@ export class CONSULTAUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ cONSULTA }) => {
+      if (cONSULTA.id === undefined) {
+        const today = dayjs().startOf('day');
+        cONSULTA.dataDaConsulta = today;
+        cONSULTA.horarioDaConsulta = today;
+      }
+
       this.updateForm(cONSULTA);
 
       this.loadRelationshipsOptions();
@@ -81,8 +91,9 @@ export class CONSULTAUpdateComponent implements OnInit {
   protected updateForm(cONSULTA: ICONSULTA): void {
     this.editForm.patchValue({
       id: cONSULTA.id,
-      nomeAluno: cONSULTA.nomeAluno,
       codConsulta: cONSULTA.codConsulta,
+      dataDaConsulta: cONSULTA.dataDaConsulta ? cONSULTA.dataDaConsulta.format(DATE_TIME_FORMAT) : null,
+      horarioDaConsulta: cONSULTA.horarioDaConsulta ? cONSULTA.horarioDaConsulta.format(DATE_TIME_FORMAT) : null,
       aLUNO: cONSULTA.aLUNO,
     });
 
@@ -101,8 +112,13 @@ export class CONSULTAUpdateComponent implements OnInit {
     return {
       ...new CONSULTA(),
       id: this.editForm.get(['id'])!.value,
-      nomeAluno: this.editForm.get(['nomeAluno'])!.value,
       codConsulta: this.editForm.get(['codConsulta'])!.value,
+      dataDaConsulta: this.editForm.get(['dataDaConsulta'])!.value
+        ? dayjs(this.editForm.get(['dataDaConsulta'])!.value, DATE_TIME_FORMAT)
+        : undefined,
+      horarioDaConsulta: this.editForm.get(['horarioDaConsulta'])!.value
+        ? dayjs(this.editForm.get(['horarioDaConsulta'])!.value, DATE_TIME_FORMAT)
+        : undefined,
       aLUNO: this.editForm.get(['aLUNO'])!.value,
     };
   }

@@ -14,17 +14,22 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="nome_aluno" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="cod_consulta" type="integer">
                 <constraints nullable="false" />
+            </column>
+            <column name="data_da_consulta" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="horario_da_consulta" type="${datetimeType}">
+                <constraints nullable="true" />
             </column>
             <column name="aluno_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
+        <dropDefaultValue tableName="consulta" columnName="data_da_consulta" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="consulta" columnName="horario_da_consulta" columnDataType="${datetimeType}"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -43,8 +48,9 @@
                   separator=";"
                   tableName="consulta">
             <column name="id" type="numeric"/>
-            <column name="nome_aluno" type="string"/>
             <column name="cod_consulta" type="numeric"/>
+            <column name="data_da_consulta" type="${datetimeType}"/>
+            <column name="horario_da_consulta" type="${datetimeType}"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

@@ -14,11 +14,6 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" jhiTranslate="reservaApp.cONSULTA.nomeAluno" for="field_nomeAluno">Nome Aluno</label>
-          <input type="text" class="form-control" name="nomeAluno" id="field_nomeAluno" data-cy="nomeAluno" formControlName="nomeAluno" />
-        </div>
-
-        <div class="form-group">
           <label class="form-control-label" jhiTranslate="reservaApp.cONSULTA.codConsulta" for="field_codConsulta">Cod Consulta</label>
           <input
             type="number"
@@ -43,6 +38,40 @@
             >
               This field should be a number.
             </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.cONSULTA.dataDaConsulta" for="field_dataDaConsulta"
+            >Data Da Consulta</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dataDaConsulta"
+              data-cy="dataDaConsulta"
+              type="datetime-local"
+              class="form-control"
+              name="dataDaConsulta"
+              formControlName="dataDaConsulta"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="reservaApp.cONSULTA.horarioDaConsulta" for="field_horarioDaConsulta"
+            >Horario Da Consulta</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_horarioDaConsulta"
+              data-cy="horarioDaConsulta"
+              type="datetime-local"
+              class="form-control"
+              name="horarioDaConsulta"
+              formControlName="horarioDaConsulta"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
           </div>
         </div>
 

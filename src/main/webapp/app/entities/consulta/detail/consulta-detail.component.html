@@ -14,13 +14,17 @@
         <dd>
           <span>{{ cONSULTA.id }}</span>
         </dd>
-        <dt><span jhiTranslate="reservaApp.cONSULTA.nomeAluno">Nome Aluno</span></dt>
-        <dd>
-          <span>{{ cONSULTA.nomeAluno }}</span>
-        </dd>
         <dt><span jhiTranslate="reservaApp.cONSULTA.codConsulta">Cod Consulta</span></dt>
         <dd>
           <span>{{ cONSULTA.codConsulta }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.cONSULTA.dataDaConsulta">Data Da Consulta</span></dt>
+        <dd>
+          <span>{{ cONSULTA.dataDaConsulta | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="reservaApp.cONSULTA.horarioDaConsulta">Horario Da Consulta</span></dt>
+        <dd>
+          <span>{{ cONSULTA.horarioDaConsulta | formatMediumDatetime }}</span>
         </dd>
         <dt><span jhiTranslate="reservaApp.cONSULTA.aLUNO">A LUNO</span></dt>
         <dd>
