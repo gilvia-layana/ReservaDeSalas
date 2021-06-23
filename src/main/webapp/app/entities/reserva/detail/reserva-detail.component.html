@@ -42,14 +42,6 @@
         <dd>
           <span jhiTranslate="{{ 'reservaApp.StatusReserva.' + rESERVA.statusReservaSala }}">{{ rESERVA.statusReservaSala }}</span>
         </dd>
-        <dt><span jhiTranslate="reservaApp.rESERVA.codUsuario">Cod Usuario</span></dt>
-        <dd>
-          <span>{{ rESERVA.codUsuario }}</span>
-        </dd>
-        <dt><span jhiTranslate="reservaApp.rESERVA.disciplinaMinistrada">Disciplina Ministrada</span></dt>
-        <dd>
-          <span>{{ rESERVA.disciplinaMinistrada }}</span>
-        </dd>
         <dt><span jhiTranslate="reservaApp.rESERVA.sALA">S ALA</span></dt>
         <dd>
           <div *ngIf="rESERVA.sALA">
@@ -62,16 +54,10 @@
             <a [routerLink]="['/consulta', rESERVA.cONSULTA?.id, 'view']">{{ rESERVA.cONSULTA?.codConsulta }}</a>
           </div>
         </dd>
-        <dt><span jhiTranslate="reservaApp.rESERVA.rESERVA">R ESERVA</span></dt>
+        <dt><span jhiTranslate="reservaApp.rESERVA.pROFESSOR">P ROFESSOR</span></dt>
         <dd>
-          <div *ngIf="rESERVA.rESERVA">
-            <a [routerLink]="['/professor', rESERVA.rESERVA?.id, 'view']">{{ rESERVA.rESERVA?.codUsuario }}</a>
-          </div>
-        </dd>
-        <dt><span jhiTranslate="reservaApp.rESERVA.rESERVA">R ESERVA</span></dt>
-        <dd>
-          <div *ngIf="rESERVA.rESERVA">
-            <a [routerLink]="['/professor', rESERVA.rESERVA?.id, 'view']">{{ rESERVA.rESERVA?.disciplinaMinistrada }}</a>
+          <div *ngIf="rESERVA.pROFESSOR">
+            <a [routerLink]="['/professor', rESERVA.pROFESSOR?.id, 'view']">{{ rESERVA.pROFESSOR?.matriculaProf }}</a>
           </div>
         </dd>
       </dl>

@@ -57,12 +57,6 @@ class RESERVAResourceIT {
     private static final StatusReserva DEFAULT_STATUS_RESERVA_SALA = StatusReserva.Confirmada;
     private static final StatusReserva UPDATED_STATUS_RESERVA_SALA = StatusReserva.Cancelada;
 
-    private static final Integer DEFAULT_COD_USUARIO = 1;
-    private static final Integer UPDATED_COD_USUARIO = 2;
-
-    private static final String DEFAULT_DISCIPLINA_MINISTRADA = "AAAAAAAAAA";
-    private static final String UPDATED_DISCIPLINA_MINISTRADA = "BBBBBBBBBB";
-
     private static final String ENTITY_API_URL = "/api/reservas";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -94,9 +88,7 @@ class RESERVAResourceIT {
             .horarioFinal(DEFAULT_HORARIO_FINAL)
             .dataSolicitacao(DEFAULT_DATA_SOLICITACAO)
             .horarioDaSolicitacao(DEFAULT_HORARIO_DA_SOLICITACAO)
-            .statusReservaSala(DEFAULT_STATUS_RESERVA_SALA)
-            .codUsuario(DEFAULT_COD_USUARIO)
-            .disciplinaMinistrada(DEFAULT_DISCIPLINA_MINISTRADA);
+            .statusReservaSala(DEFAULT_STATUS_RESERVA_SALA);
         return rESERVA;
     }
 
@@ -114,9 +106,7 @@ class RESERVAResourceIT {
             .horarioFinal(UPDATED_HORARIO_FINAL)
             .dataSolicitacao(UPDATED_DATA_SOLICITACAO)
             .horarioDaSolicitacao(UPDATED_HORARIO_DA_SOLICITACAO)
-            .statusReservaSala(UPDATED_STATUS_RESERVA_SALA)
-            .codUsuario(UPDATED_COD_USUARIO)
-            .disciplinaMinistrada(UPDATED_DISCIPLINA_MINISTRADA);
+            .statusReservaSala(UPDATED_STATUS_RESERVA_SALA);
         return rESERVA;
     }
 
@@ -145,8 +135,6 @@ class RESERVAResourceIT {
         assertThat(testRESERVA.getDataSolicitacao()).isEqualTo(DEFAULT_DATA_SOLICITACAO);
         assertThat(testRESERVA.getHorarioDaSolicitacao()).isEqualTo(DEFAULT_HORARIO_DA_SOLICITACAO);
         assertThat(testRESERVA.getStatusReservaSala()).isEqualTo(DEFAULT_STATUS_RESERVA_SALA);
-        assertThat(testRESERVA.getCodUsuario()).isEqualTo(DEFAULT_COD_USUARIO);
-        assertThat(testRESERVA.getDisciplinaMinistrada()).isEqualTo(DEFAULT_DISCIPLINA_MINISTRADA);
     }
 
     @Test
@@ -202,9 +190,7 @@ class RESERVAResourceIT {
             .andExpect(jsonPath("$.[*].horarioFinal").value(hasItem(sameInstant(DEFAULT_HORARIO_FINAL))))
             .andExpect(jsonPath("$.[*].dataSolicitacao").value(hasItem(sameInstant(DEFAULT_DATA_SOLICITACAO))))
             .andExpect(jsonPath("$.[*].horarioDaSolicitacao").value(hasItem(sameInstant(DEFAULT_HORARIO_DA_SOLICITACAO))))
-            .andExpect(jsonPath("$.[*].statusReservaSala").value(hasItem(DEFAULT_STATUS_RESERVA_SALA.toString())))
-            .andExpect(jsonPath("$.[*].codUsuario").value(hasItem(DEFAULT_COD_USUARIO)))
-            .andExpect(jsonPath("$.[*].disciplinaMinistrada").value(hasItem(DEFAULT_DISCIPLINA_MINISTRADA)));
+            .andExpect(jsonPath("$.[*].statusReservaSala").value(hasItem(DEFAULT_STATUS_RESERVA_SALA.toString())));
     }
 
     @Test
@@ -225,9 +211,7 @@ class RESERVAResourceIT {
             .andExpect(jsonPath("$.horarioFinal").value(sameInstant(DEFAULT_HORARIO_FINAL)))
             .andExpect(jsonPath("$.dataSolicitacao").value(sameInstant(DEFAULT_DATA_SOLICITACAO)))
             .andExpect(jsonPath("$.horarioDaSolicitacao").value(sameInstant(DEFAULT_HORARIO_DA_SOLICITACAO)))
-            .andExpect(jsonPath("$.statusReservaSala").value(DEFAULT_STATUS_RESERVA_SALA.toString()))
-            .andExpect(jsonPath("$.codUsuario").value(DEFAULT_COD_USUARIO))
-            .andExpect(jsonPath("$.disciplinaMinistrada").value(DEFAULT_DISCIPLINA_MINISTRADA));
+            .andExpect(jsonPath("$.statusReservaSala").value(DEFAULT_STATUS_RESERVA_SALA.toString()));
     }
 
     @Test
@@ -256,9 +240,7 @@ class RESERVAResourceIT {
             .horarioFinal(UPDATED_HORARIO_FINAL)
             .dataSolicitacao(UPDATED_DATA_SOLICITACAO)
             .horarioDaSolicitacao(UPDATED_HORARIO_DA_SOLICITACAO)
-            .statusReservaSala(UPDATED_STATUS_RESERVA_SALA)
-            .codUsuario(UPDATED_COD_USUARIO)
-            .disciplinaMinistrada(UPDATED_DISCIPLINA_MINISTRADA);
+            .statusReservaSala(UPDATED_STATUS_RESERVA_SALA);
 
         restRESERVAMockMvc
             .perform(
@@ -279,8 +261,6 @@ class RESERVAResourceIT {
         assertThat(testRESERVA.getDataSolicitacao()).isEqualTo(UPDATED_DATA_SOLICITACAO);
         assertThat(testRESERVA.getHorarioDaSolicitacao()).isEqualTo(UPDATED_HORARIO_DA_SOLICITACAO);
         assertThat(testRESERVA.getStatusReservaSala()).isEqualTo(UPDATED_STATUS_RESERVA_SALA);
-        assertThat(testRESERVA.getCodUsuario()).isEqualTo(UPDATED_COD_USUARIO);
-        assertThat(testRESERVA.getDisciplinaMinistrada()).isEqualTo(UPDATED_DISCIPLINA_MINISTRADA);
     }
 
     @Test
@@ -376,8 +356,6 @@ class RESERVAResourceIT {
         assertThat(testRESERVA.getDataSolicitacao()).isEqualTo(DEFAULT_DATA_SOLICITACAO);
         assertThat(testRESERVA.getHorarioDaSolicitacao()).isEqualTo(UPDATED_HORARIO_DA_SOLICITACAO);
         assertThat(testRESERVA.getStatusReservaSala()).isEqualTo(DEFAULT_STATUS_RESERVA_SALA);
-        assertThat(testRESERVA.getCodUsuario()).isEqualTo(DEFAULT_COD_USUARIO);
-        assertThat(testRESERVA.getDisciplinaMinistrada()).isEqualTo(DEFAULT_DISCIPLINA_MINISTRADA);
     }
 
     @Test
@@ -399,9 +377,7 @@ class RESERVAResourceIT {
             .horarioFinal(UPDATED_HORARIO_FINAL)
             .dataSolicitacao(UPDATED_DATA_SOLICITACAO)
             .horarioDaSolicitacao(UPDATED_HORARIO_DA_SOLICITACAO)
-            .statusReservaSala(UPDATED_STATUS_RESERVA_SALA)
-            .codUsuario(UPDATED_COD_USUARIO)
-            .disciplinaMinistrada(UPDATED_DISCIPLINA_MINISTRADA);
+            .statusReservaSala(UPDATED_STATUS_RESERVA_SALA);
 
         restRESERVAMockMvc
             .perform(
@@ -422,8 +398,6 @@ class RESERVAResourceIT {
         assertThat(testRESERVA.getDataSolicitacao()).isEqualTo(UPDATED_DATA_SOLICITACAO);
         assertThat(testRESERVA.getHorarioDaSolicitacao()).isEqualTo(UPDATED_HORARIO_DA_SOLICITACAO);
         assertThat(testRESERVA.getStatusReservaSala()).isEqualTo(UPDATED_STATUS_RESERVA_SALA);
-        assertThat(testRESERVA.getCodUsuario()).isEqualTo(UPDATED_COD_USUARIO);
-        assertThat(testRESERVA.getDisciplinaMinistrada()).isEqualTo(UPDATED_DISCIPLINA_MINISTRADA);
     }
 
     @Test

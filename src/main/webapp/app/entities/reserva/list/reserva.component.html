@@ -40,12 +40,9 @@
           <th scope="col"><span jhiTranslate="reservaApp.rESERVA.dataSolicitacao">Data Solicitacao</span></th>
           <th scope="col"><span jhiTranslate="reservaApp.rESERVA.horarioDaSolicitacao">Horario Da Solicitacao</span></th>
           <th scope="col"><span jhiTranslate="reservaApp.rESERVA.statusReservaSala">Status Reserva Sala</span></th>
-          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.codUsuario">Cod Usuario</span></th>
-          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.disciplinaMinistrada">Disciplina Ministrada</span></th>
           <th scope="col"><span jhiTranslate="reservaApp.rESERVA.sALA">S ALA</span></th>
           <th scope="col"><span jhiTranslate="reservaApp.rESERVA.cONSULTA">C ONSULTA</span></th>
-          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.rESERVA">R ESERVA</span></th>
-          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.rESERVA">R ESERVA</span></th>
+          <th scope="col"><span jhiTranslate="reservaApp.rESERVA.pROFESSOR">P ROFESSOR</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -61,8 +58,6 @@
           <td>{{ rESERVA.dataSolicitacao | formatMediumDatetime }}</td>
           <td>{{ rESERVA.horarioDaSolicitacao | formatMediumDatetime }}</td>
           <td jhiTranslate="{{ 'reservaApp.StatusReserva.' + rESERVA.statusReservaSala }}">{{ rESERVA.statusReservaSala }}</td>
-          <td>{{ rESERVA.codUsuario }}</td>
-          <td>{{ rESERVA.disciplinaMinistrada }}</td>
           <td>
             <div *ngIf="rESERVA.sALA">
               <a [routerLink]="['/sala', rESERVA.sALA?.id, 'view']">{{ rESERVA.sALA?.codSala }}</a>
@@ -74,13 +69,8 @@
             </div>
           </td>
           <td>
-            <div *ngIf="rESERVA.rESERVA">
-              <a [routerLink]="['/professor', rESERVA.rESERVA?.id, 'view']">{{ rESERVA.rESERVA?.codUsuario }}</a>
-            </div>
-          </td>
-          <td>
-            <div *ngIf="rESERVA.rESERVA">
-              <a [routerLink]="['/professor', rESERVA.rESERVA?.id, 'view']">{{ rESERVA.rESERVA?.disciplinaMinistrada }}</a>
+            <div *ngIf="rESERVA.pROFESSOR">
+              <a [routerLink]="['/professor', rESERVA.pROFESSOR?.id, 'view']">{{ rESERVA.pROFESSOR?.matriculaProf }}</a>
             </div>
           </td>
           <td class="text-right">

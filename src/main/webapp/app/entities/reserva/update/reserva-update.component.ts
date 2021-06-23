@@ -37,12 +37,9 @@ export class RESERVAUpdateComponent implements OnInit {
     dataSolicitacao: [],
     horarioDaSolicitacao: [],
     statusReservaSala: [],
-    codUsuario: [],
-    disciplinaMinistrada: [],
     sALA: [],
     cONSULTA: [],
-    rESERVA: [],
-    rESERVA: [],
+    pROFESSOR: [],
   });
 
   constructor(
@@ -125,12 +122,9 @@ export class RESERVAUpdateComponent implements OnInit {
       dataSolicitacao: rESERVA.dataSolicitacao ? rESERVA.dataSolicitacao.format(DATE_TIME_FORMAT) : null,
       horarioDaSolicitacao: rESERVA.horarioDaSolicitacao ? rESERVA.horarioDaSolicitacao.format(DATE_TIME_FORMAT) : null,
       statusReservaSala: rESERVA.statusReservaSala,
-      codUsuario: rESERVA.codUsuario,
-      disciplinaMinistrada: rESERVA.disciplinaMinistrada,
       sALA: rESERVA.sALA,
       cONSULTA: rESERVA.cONSULTA,
-      rESERVA: rESERVA.rESERVA,
-      rESERVA: rESERVA.rESERVA,
+      pROFESSOR: rESERVA.pROFESSOR,
     });
 
     this.sALASSharedCollection = this.sALAService.addSALAToCollectionIfMissing(this.sALASSharedCollection, rESERVA.sALA);
@@ -140,8 +134,7 @@ export class RESERVAUpdateComponent implements OnInit {
     );
     this.pROFESSORSSharedCollection = this.pROFESSORService.addPROFESSORToCollectionIfMissing(
       this.pROFESSORSSharedCollection,
-      rESERVA.rESERVA,
-      rESERVA.rESERVA
+      rESERVA.pROFESSOR
     );
   }
 
@@ -167,11 +160,7 @@ export class RESERVAUpdateComponent implements OnInit {
       .pipe(map((res: HttpResponse<IPROFESSOR[]>) => res.body ?? []))
       .pipe(
         map((pROFESSORS: IPROFESSOR[]) =>
-          this.pROFESSORService.addPROFESSORToCollectionIfMissing(
-            pROFESSORS,
-            this.editForm.get('rESERVA')!.value,
-            this.editForm.get('rESERVA')!.value
-          )
+          this.pROFESSORService.addPROFESSORToCollectionIfMissing(pROFESSORS, this.editForm.get('pROFESSOR')!.value)
         )
       )
       .subscribe((pROFESSORS: IPROFESSOR[]) => (this.pROFESSORSSharedCollection = pROFESSORS));
@@ -196,12 +185,9 @@ export class RESERVAUpdateComponent implements OnInit {
         ? dayjs(this.editForm.get(['horarioDaSolicitacao'])!.value, DATE_TIME_FORMAT)
         : undefined,
       statusReservaSala: this.editForm.get(['statusReservaSala'])!.value,
-      codUsuario: this.editForm.get(['codUsuario'])!.value,
-      disciplinaMinistrada: this.editForm.get(['disciplinaMinistrada'])!.value,
       sALA: this.editForm.get(['sALA'])!.value,
       cONSULTA: this.editForm.get(['cONSULTA'])!.value,
-      rESERVA: this.editForm.get(['rESERVA'])!.value,
-      rESERVA: this.editForm.get(['rESERVA'])!.value,
+      pROFESSOR: this.editForm.get(['pROFESSOR'])!.value,
     };
   }
 }
